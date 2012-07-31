@@ -1,0 +1,22 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Co-author: Anthony van der Hoorn
+  Site: http://bog.anthonyvanderhoorn.com/
+  Twitter: @anthony_vdh
+  Location: Brisbane, Australia
+  
+  Co-author: Nik Molnar
+  Site: http://nikcodes.com/
+  Twitter: @nikmd27
+  Location: New York, America
+
+/* THANKS */
+  John Gruber (http://daringfireball.net/projects/markdown/):
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Modernizr, jQuery
+  Software:
