@@ -37,153 +37,144 @@
         </div>
         <div class="box">
             <a id="Main"></a>
-            <h1>Semantic Release Notes</h1>
-
-            <p>
-                Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
-                specificly aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
-                This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
-                (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
-                typed information within 3rd party applications.
-            </p>
-
-            <p>
-                Thus, SRN is two things:
-                <ol>
-                    <li>a plain text formatting syntax; and</li>
-                    <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
-                </ol>
-                See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN fomatting syntax. You can 
-                also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
-                examples.  
-            </p>
+            <div class="section-main">
+                <h1>Semantic Release Notes</h1> 
+                <p>
+                    Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
+                    specificly aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
+                    This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
+                    (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
+                    typed information within 3rd party applications.
+                </p> 
+                <p>
+                    Thus, SRN is two things:
+                    <ol>
+                        <li>a plain text formatting syntax; and</li>
+                        <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
+                    </ol>
+                    See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN fomatting syntax. You can 
+                    also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
+                    examples.  
+                </p>
             
-            <h3>Goals</h3>
+                <h3>Goals</h3> 
+                <p>
+                    The overriding design goals for SRN's formatting syntax is:
+                    <ul>
+                        <li>to make it as <strong>readable as possible</strong>,</li>
+                        <li>to make this document <strong>parsable by a standard Markdown parser</strong>, and</li>
+                        <li>to <strong>extract typed release information</strong> from the document.</li>
+                    </ul> 
+                    The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
+                    without looking like it's been marked up with tags or formatting instructions. This works well in a 
+                    Release Notes senario where plan text documents usually accompany the build. Additional, with the 
+                    assumtptions around the formating of the Release document, SRN can <strong>extract semantic meaning</strong> 
+                    from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
+                </p>
 
-            <p>
-                The overriding design goals for SRN's formatting syntax is:
-                <ul>
-                    <li>to make it as <strong>readable as possible</strong>,</li>
-                    <li>to make this document <strong>parsable by a standard Markdown parser</strong>, and</li>
-                    <li>to <strong>extract typed release information</strong> from the document.</li>
-                </ul> 
-                The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
-                without looking like it's been marked up with tags or formatting instructions. This works well in a 
-                Release Notes senario where plan text documents usually accompany the build. Additional, with the 
-                assumtptions around the formating of the Release document, SRN can <strong>extract semantic meaning</strong> 
-                from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
-            </p>
-
-            <h3>Influences</h3>
-
-            <p>
-                The estabilishment of the overall snytax and simplicity of the document is based on <strong>Markdown</strong>.
-                As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
-                This means that besides making the document human readable, it means that systems that aren't SRN 
-                aware but are Markdown aware, can still parse the documents.
-            </p>
-
-            <p>
-                The idea of being able to extract typed meaning from the document, isn't estabilished here, rather 
-                influcences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
-                follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
-                TODO domain from the document. The origins on the stanrd are similar to those of Markdown (a need 
-                for human readability), but also a need to be able to define tasks, which are complete, what priority 
-                a given task has, etc.
-            </p>
-
+                <h3>Influences</h3> 
+                <p>
+                    The estabilishment of the overall snytax and simplicity of the document is based on <strong>Markdown</strong>.
+                    As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
+                    This means that besides making the document human readable, it means that systems that aren't SRN 
+                    aware but are Markdown aware, can still parse the documents.
+                </p> 
+                <p>
+                    The idea of being able to extract typed meaning from the document, isn't estabilished here, rather 
+                    influcences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
+                    follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
+                    TODO domain from the document. The origins on the stanrd are similar to those of Markdown (a need 
+                    for human readability), but also a need to be able to define tasks, which are complete, what priority 
+                    a given task has, etc.
+                </p>
+            </div>
             
             <a id="Basics"></a>
-            <h2>Basics</h2>
+            <div class="section-basics">
+                <h2>Basics</h2>
             
-            <h3>The axes of an Semantic Release Notes </h3>
-
-            <p>
-                Using the Markdown syntax in a SRN, you can create a list that’s sliceable by various key axes.
-                <ul>
-                    <li>
-                        <strong>Item</strong>:
-                        A release note should be able to show which "items" are included in a given release. This is indicated via 
-                        a standard Markdown <em>ordered</em> or <em>unorderded list</em>. 
-                    </li>
-                    <li>
-                        <strong>Section</strong>:
-                        Lets the author group items which represent logical sections within the application. 
-                        These can be abratary in nature and specifc to the release notes which application is for.
-                        This is indicated via a standard Markdown <em>header</em>. 
-                    </li>
-                    <li>
-                        <strong>Release</strong>:
-                        As SRN allows for many releases to be defined within the one block of text, the system needs 
-                        to provide a means by which an indovidual release can be identified.
-                        This is indicated via a standard Markdown <em>header</em>. 
-                    </li>
-                    <li>
-                        <strong>Project</strong>:
-                        As SRN allows for many projects with many releases to be defined within the one block of 
-                        text, the system needs to provide a means by which an indovidual release can be identified.
-                        This is indicated via a standard Markdown <em>header</em>. 
-                    </li>
-                    <li>
-                        <strong>Priority</strong>:
-                        The release note should be able to let you define the importance feature or item that has been 
-                        defined. This is indicated via a standard Markdown <em>ordered list</em>.
-                    </li>
-                    <li>
-                        <strong>Category</strong>:
-                        Additionally the release note should be able to indicate what category an item is. For instance, 
-                        "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
-                        list item that has a "+" prefix. 
-                    </li>
-                </ul>
-            </p> 
-            
-            <h3>Summaries</h3>
-
-            <p>
-                It is useful to be able to provide summaries various parts of the release. Sections, Releases and Projects allow 
-                for multi-line multi-paragraph summaries. The summary for an Item is more restictive only allowing a 
-                single paragraph descriptions. 
-            </p>
-            
-            <p>
-                In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).  
-                <div class="container">
-                    <strong>Item:</strong>
-                    <pre class="code"> - This is the _first_ *list* item.
+                <h3>The axes of an Semantic Release Notes </h3> 
+                <p>
+                    Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
+                    <ul>
+                        <li>
+                            <strong>Item</strong>:
+                            A release note should be able to show which "items" are included in a given release. This is indicated via 
+                            a standard Markdown <em>ordered</em> or <em>unorderded list</em>. 
+                        </li>
+                        <li>
+                            <strong>Section</strong>:
+                            Lets the author group items which represent logical sections within the application. 
+                            These can be abratary in nature and specifc to the release notes which application is for.
+                            This is indicated via a standard Markdown <em>header</em>. 
+                        </li>
+                        <li>
+                            <strong>Release</strong>:
+                            As SRN allows for many releases to be defined within the one block of text, the system needs 
+                            to provide a means by which an indovidual release can be identified.
+                            This is indicated via a standard Markdown <em>header</em>. 
+                        </li>
+                        <li>
+                            <strong>Project</strong>:
+                            As SRN allows for many projects with many releases to be defined within the one block of 
+                            text, the system needs to provide a means by which an indovidual release can be identified.
+                            This is indicated via a standard Markdown <em>header</em>. 
+                        </li>
+                        <li>
+                            <strong>Priority</strong>:
+                            The release note should be able to let you define the importance feature or item that has been 
+                            defined. This is indicated via a standard Markdown <em>ordered list</em>.
+                        </li>
+                        <li>
+                            <strong>Category</strong>:
+                            Additionally the release note should be able to indicate what category an item is. For instance, 
+                            "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
+                            list item that has a "+" prefix. 
+                        </li>
+                    </ul>
+                </p> 
+                
+                <h3>Summaries</h3>
+                <p>
+                    It is useful to be able to provide summaries various parts of the release. Sections, Releases and Projects allow 
+                    for multi-line multi-paragraph summaries, whilst the summary for an Item is more restictive, only allowing a 
+                    single paragraph descriptions. 
+                </p>
+                <p>
+                    In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).  
+                    <div class="container">
+                        <strong>Item examples:</strong>
+                        <pre class="code"> - This is the _first_ *list* item.
  - This is the **second** __list__ item.
  - This is the `third` list item.
  - This is the [forth](?) list item.</pre>
-                    <div class="result"></div>
-                    <pre class="object"></pre>
-                </div> 
-                <div class="container">
-                    <strong>Sections, Releases and Projects:</strong>
-                    <pre class="code"># Section
-This is a _section_ with two paragraphs. Lorem ipsum dolor
-sit amet consectetuer **adipiscing** elit. Aliquam hendrerit
-mi posuere lectus.
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
+                    <div class="container">
+                        <strong>Sections, Releases and Projects examples:</strong>
+                        <pre class="code">This is a _project_ summary with two paragraphs. 
+Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
+Aliquam hendreritmi posuere lectus.
 
 Vestibulum `enim wisi` viverra nec fringilla in laoreet
 vitae risus. Donec sit amet nisl. Aliquam [semper](?) ipsum
 sit amet velit.</pre>
-                    <div class="result"></div>
-                    <pre class="object"></pre>
-                </div> 
-            </p>
-
-            <h3>Items</h3>
-            
-            <p>
-                When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
-                lists indicate the items what are a part of the Section or Release they are a part of.
-            </p>
-
-            <p>
-                Since the syntax is a subset of Markdown the same list types are supported.  
-                <div class="container">
-                    <strong>Release and Section Items:</strong>
-                    <pre class="code"> - This is a Release scoped first list item.
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
+                </p>
+                
+                <h3>Items</h3>
+                <p>
+                    When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                    lists indicate the items what are a part of the Section or Release they are a part of.
+                </p>
+                <p>
+                    Since the syntax is a subset of Markdown the same list types are supported.  
+                    <div class="container">
+                        <strong>Release Items and Section Items examples:</strong>
+                        <pre class="code"> - This is a Release scoped first list item.
  - This is a Release scoped second list item.
                         
 # Section
@@ -191,57 +182,80 @@ sit amet velit.</pre>
  * This is a Section scoped second list item.
 
 # Other Section
- + This is a Section scoped first list item.
- + This is a Section scoped second list item.
-                    </pre>
-                    <div class="result"></div>
-                    <pre class="object"></pre>
-                </div> 
-            </p>
-            
-            <h3>Sections</h3>
+ + This is a Other Section scoped first list item.
+ + This is a Other Section scoped second list item.
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
+                </p>
+                
+                <h3>Sections</h3>
+                <p>
+                    When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                    lists indicate the items what are a part of the Section or Release they are a part of. These are usually used in larger 
+                    applications when it's important to issolate out different sections of the application.
+                </p>
+                <p>
+                    Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
+                    <div class="container">
+                        <strong>Release Sections Items:</strong>
+                        <pre class="code"># Section
+This is the summary for Section.
+ - This is a Section scoped first list item.
+ - This is a Section scoped second list item.
+
+# Other Section
+This is the summary for Other Section.
+ - This is a Other Section scoped first list item.
+ - This is a Other Section scoped second list item.
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
+                </p>
+                 
+                <h3>Priority</h3>
 
             
-            <h3>Priority</h3>
+                <h3>Category</h3>
 
             
-            <h3>Category</h3>
+                <h3>Release</h3>
 
             
-            <h3>Release</h3>
+                <h3>Project</h3>
+            </div>
 
-            
-            <h3>Project</h3>
-
-            
             <a id="Syntax"></a>
-            <h2>Syntax</h2>
-            <div class="section-editor">
+            <div class="section-syntax"> 
+                <h2>Syntax</h2>
+                <div class="section-editor">
 
-                <h3>Working Examples</h3>
-                <ul class="tabs">
-                    <li><a class="active" data-tab="1">Example A</a></li>
-                    <li><a data-tab="2">Example B</a></li>
-                    <li><a data-tab="3">Example C</a></li>
-                    <li><a data-tab="4">Example D</a></li>
-                </ul> 
-                <ul class="tabs-content example">
-                    <li class="active container" data-tab="1">
-                        <strong>Source:</strong>
-                        <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                    <h3>Working Examples</h3>
+                    <ul class="tabs">
+                        <li><a class="active" data-tab="1">Example A</a></li>
+                        <li><a data-tab="2">Example B</a></li>
+                        <li><a data-tab="3">Example C</a></li>
+                        <li><a data-tab="4">Example D</a></li>
+                    </ul> 
+                    <ul class="tabs-content example">
+                        <li class="active container" data-tab="1">
+                            <strong>Source:</strong>
+                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
 
  - Release Checker: Now gives you a breakdown of exactly what you are missing. +New
  - Structured Layout: An alternative layout engine that allows developers to control layout. +New
  - Timeline: Comes with an additional grid view to show the same data. +Changed
  - Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</pre>
-                        <strong>Result:</strong>
-                        <div class="result"></div>
-                        <strong>Object:</strong>
-                        <pre class="object"></pre>
-                    </li>
-                    <li class="container" data-tab="2">
-                        <strong>Source:</strong>
-                        <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                            <strong>Result:</strong>
+                            <div class="result"></div>
+                            <strong>Object:</strong>
+                            <pre class="object"></pre>
+                        </li>
+                        <li class="container" data-tab="2">
+                            <strong>Source:</strong>
+                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
 
 # System
  - *Release Checker*: Now gives you a breakdown of exactly what you are missing. +New
@@ -250,14 +264,14 @@ sit amet velit.</pre>
 # Plugin
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</pre>
-                        <strong>Result:</strong>
-                        <div class="result"></div>
-                        <strong>Object:</strong>
-                        <pre class="object"></pre>
-                    </li>
-                    <li class="container" data-tab="3">
-                        <strong>Source:</strong>
-                        <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                            <strong>Result:</strong>
+                            <div class="result"></div>
+                            <strong>Object:</strong>
+                            <pre class="object"></pre>
+                        </li>
+                        <li class="container" data-tab="3">
+                            <strong>Source:</strong>
+                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
  - *Example*: You can have global issues that aren't grouped to a section
 
 # System
@@ -269,14 +283,14 @@ This description is specific to system section.
 This description is specific to plugin section.
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
-                        <strong>Result:</strong>
-                        <div class="result"></div>
-                        <strong>Object:</strong>
-                        <pre class="object"></pre>
-                    </li>
-                    <li class="container" data-tab="4">
-                        <strong>Source:</strong>
-                        <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                            <strong>Result:</strong>
+                            <div class="result"></div>
+                            <strong>Object:</strong>
+                            <pre class="object"></pre>
+                        </li>
+                        <li class="container" data-tab="4">
+                            <strong>Source:</strong>
+                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
  1. *Example*: You can have global issues that aren't grouped to a section
 
 # System [[icon][http://getglimpse.com/release/icon/core.png]]
@@ -288,44 +302,50 @@ This description is specific to system section.
 This description is specific to plugin section.
  1. *Timeline*: Comes with an additional grid view to show the same data. +Changed
  1. *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
-                        <strong>Result:</strong>
-                        <div class="result"></div>
-                        <strong>Object:</strong>
-                        <pre class="object"></pre>
-                    </li>
-                </ul>
-            <//div>
+                            <strong>Result:</strong>
+                            <div class="result"></div>
+                            <strong>Object:</strong>
+                            <pre class="object"></pre>
+                        </li>
+                    </ul>
+                <//div>
+            </div>
 
             <a id="Editor"></a>
-            <h2>Live Editor</h2> 
-            <div class="section-editor"> 
-                <textarea class="editor">Incremental release designed to provide a update to some of the core plugins.
+            <div class="section-editor">
+                <h2>Live Editor</h2> 
+                <div class="section-editor"> 
+                    <textarea class="editor">Incremental release designed to provide a update to some of the core plugins.
 
  - Release Checker: Now gives you a breakdown of exactly what you are missing. +New
  - Structured Layout: An alternative layout engine that allows developers to control layout. +New
  - Timeline: Comes with an additional grid view to show the same data. +Changed
  - Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</textarea>
-                <div class="center">
-                    <button class="execute">Parse!</button>
-                </div>
-                <div class="result-container">
-                    <strong>Result:</strong>
-                    <div class="result"></div>
-                    <strong>Object:</strong>
-                    <pre class="object"></pre>
+                    <div class="center">
+                        <button class="execute">Parse!</button>
+                    </div>
+                    <div class="result-container">
+                        <strong>Result:</strong>
+                        <div class="result"></div>
+                        <strong>Object:</strong>
+                        <pre class="object"></pre>
+                    </div>
                 </div>
             </div>
 
-
-            
             <a id="Micro-Format"></a>
-            <h2>Micro Format</h2>
+            <div class="section-micro-format">
+                <h2>Micro Format</h2>
 
-            
+
+            </div>
+
             <a id="Acknowledgements"></a>
-            <h2>Acknowledgements</h2>
-            <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
-            for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+            <div class="section-acknowledgements">
+                <h2>Acknowledgements</h2>
+                <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
+                for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+            </div>
         </div>  
         <footer>
             Copyright &copy; 2012 Anthony van der Hoorn &amp; Nik Molnar
