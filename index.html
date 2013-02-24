@@ -97,6 +97,11 @@
                         Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
                         <ul>
                             <li>
+                                <strong>Summaries</strong>:
+                                At its most basic level, SRN should be able to take a paragraph and interprete that as the summary 
+                                of what the release is about. 
+                            </li>
+                            <li>
                                 <strong>Item</strong>:
                                 A release note should be able to show which "items" are included in a given release. This is indicated via 
                                 a standard Markdown <em>ordered</em> or <em>unorderded list</em>. 
@@ -140,18 +145,9 @@
                         single paragraph descriptions. 
                     </p>
                     <p>
-                        In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).  
+                        In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).
                         <div class="container">
-                            <strong>Item examples:</strong>
-                            <pre class="code"> - This is the _first_ *list* item.
- - This is the **second** __list__ item.
- - This is the `third` list item.
- - This is the [forth](?) list item.</pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                        <div class="container">
-                            <strong>Sections, Releases and Projects examples:</strong>
+                            <strong>Examples:</strong>
                             <pre class="code">This is a _project_ summary with two paragraphs. 
 Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
 Aliquam hendreritmi posuere lectus.
@@ -170,20 +166,13 @@ sit amet velit.</pre>
                         lists indicate the items what are a part of the Section or Release they are a part of.
                     </p>
                     <p>
-                        Since the syntax is a subset of Markdown the same list types are supported.  
+                        Since the syntax is a subset of Markdown the same list types are supported.   
                         <div class="container">
-                            <strong>Release Items and Section Items examples:</strong>
-                            <pre class="code"> - This is a Release scoped first list item.
- - This is a Release scoped second list item.
-                        
-# Section
- * This is a Section scoped first list item.
- * This is a Section scoped second list item.
-
-# Other Section
- + This is a Other Section scoped first list item.
- + This is a Other Section scoped second list item.
-                            </pre>
+                            <strong>Examples:</strong>
+                            <pre class="code"> - This is the _first_ *list* item.
+ - This is the **second** __list__ item.
+ - This is the `third` list item.
+ - This is the [forth](?) list item.</pre>
                             <div class="result"></div>
                             <pre class="object"></pre>
                         </div> 
@@ -198,7 +187,7 @@ sit amet velit.</pre>
                     <p>
                         Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
                         <div class="container">
-                            <strong>Release Sections Items:</strong>
+                            <strong>Examples:</strong>
                             <pre class="code"># Section
 This is the summary for Section.
  - This is a Section scoped first list item.
@@ -225,7 +214,7 @@ This is the summary for Other Section.
                         Since the syntax is a subset of Markdown the same ordered list types is supported. Note, the 
                         index order isn't important.
                         <div class="container">
-                            <strong>Release Items with Priorities defined:</strong>
+                            <strong>Example:</strong>
                             <pre class="code"> 1. This is a High priority list item.
  1. This is a High priority list item. 
  2. This is a Normal priority list item. 
@@ -249,7 +238,7 @@ This is the summary for Other Section.
                         Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation at 
                         the end of the item "+New".
                         <div class="container">
-                            <strong>Release Items and Section Items examples:</strong>
+                            <strong>Examples:</strong>
                             <pre class="code"> - This is a New list item. +New
  - This is a Fix list item. +Fix
  - This is a Change list item. +Change
@@ -275,7 +264,9 @@ This is the summary for Other Section.
                         Normal Markdown headers are used to describe the version number for each release and the scope 
                         of reach release (which item, etc makes up the release).
                         <div class="container">
-                            <strong>Multiple Release examples:</strong>
+                            <strong>Examples:</strong>
+                            Not yet specified.
+                            <!--
                             <pre class="code"># 1.1
 This is the release summary for 1.1
 
@@ -287,9 +278,12 @@ This is the release summary for 2.0
                             </pre>
                             <div class="result"></div>
                             <pre class="object"></pre>
+                            -->
                         </div>  
                         <div class="container">
-                            <strong>Multiple Release with Sections examples:</strong>
+                            <strong>Examples:</strong>
+                            Not yet specified.
+                            <!--
                             <pre class="code"># 1.1
 This is the release summary for 1.1
 
@@ -316,6 +310,7 @@ This is the summary for Other Section for 2.0.
                             </pre>
                             <div class="result"></div>
                             <pre class="object"></pre>
+                            -->
                         </div> 
                     </p>
 
@@ -327,6 +322,10 @@ This is the summary for Other Section for 2.0.
                         to define a heading which is the Project name. If you use this feature, it assumes that you 
                         will also provide the Release details (Version Numbers) for each release. When this is done,
                         Release and Section headers are also altered.
+                        <div class="container">
+                            <strong>Examples:</strong>
+                            Not yet specified.
+                        </div>
                     </p>
                 </div>
             </div> 
