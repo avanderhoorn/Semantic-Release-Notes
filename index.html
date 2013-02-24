@@ -10,14 +10,11 @@
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="css/style.css">
-
-    <!--<script src="js/libs/modernizr-2.5.3.min.js"></script>-->
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-    <header>
-
+    <header> 
     </header>
     <div class="main" role="main"> 
         <div class="menu">
@@ -26,155 +23,157 @@
                     By <strong>Anthony van der Hoorn</strong><br /> &amp; <strong>Nik Molnar</strong> 
                 </div>
                 <ul>
-                    <li><a href="#Main">Main</a></li>
-                    <li><a href="#Basics">Basics</a></li>
-                    <li><a href="#Syntax">Syntax</a></li>
-                    <li><a href="#Editor">Live Editor</a></li>
-                    <li><a href="#Micro-Format">Micro Format</a></li>
-                    <li><a href="#Acknowledgements">Acknowledgements</a></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-1">Main</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-2">Basics</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-3">Syntax</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-4">Live Editor</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-5">Micro Format</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-6">Acknowledgements</label></li>
                 </ul>
             </div>
-        </div>
+        </div>  
         <div class="box">
-            <a id="Main"></a>
-            <div class="section-main">
-                <h1>Semantic Release Notes</h1> 
-                <p>
-                    Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
-                    specificly aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
-                    This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
-                    (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
-                    typed information within 3rd party applications.
-                </p> 
-                <p>
-                    Thus, SRN is two things:
-                    <ol>
-                        <li>a plain text formatting syntax; and</li>
-                        <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
-                    </ol>
-                    See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN fomatting syntax. You can 
-                    also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
-                    examples.  
-                </p>
+            <h1>Semantic Release Notes</h1> 
+            <div>
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-1" type="radio" checked="checked" />
+                <div class="section-main">
+                    <p>
+                        Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
+                        specificly aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
+                        This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
+                        (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
+                        typed information within 3rd party applications.
+                    </p> 
+                    <p>
+                        Thus, SRN is two things:
+                        <ol>
+                            <li>a plain text formatting syntax; and</li>
+                            <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
+                        </ol>
+                        See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN fomatting syntax. You can 
+                        also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
+                        examples.  
+                    </p>
             
-                <h3>Goals</h3> 
-                <p>
-                    The overriding design goals for SRN's formatting syntax is:
-                    <ul>
-                        <li>to make it as <strong>readable as possible</strong>,</li>
-                        <li>to make this document <strong>parsable by a standard Markdown parser</strong>, and</li>
-                        <li>to <strong>extract typed release information</strong> from the document.</li>
-                    </ul> 
-                    The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
-                    without looking like it's been marked up with tags or formatting instructions. This works well in a 
-                    Release Notes senario where plan text documents usually accompany the build. Additional, with the 
-                    assumtptions around the formating of the Release document, SRN can <strong>extract semantic meaning</strong> 
-                    from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
-                </p>
+                    <h3>Goals</h3> 
+                    <p>
+                        The overriding design goals for SRN's formatting syntax is:
+                        <ul>
+                            <li>to make it as <strong>readable as possible</strong>,</li>
+                            <li>to make this document <strong>parsable by a standard Markdown parser</strong>, and</li>
+                            <li>to <strong>extract typed release information</strong> from the document.</li>
+                        </ul> 
+                        The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
+                        without looking like it's been marked up with tags or formatting instructions. This works well in a 
+                        Release Notes senario where plan text documents usually accompany the build. Additional, with the 
+                        assumtptions around the formating of the Release document, SRN can <strong>extract semantic meaning</strong> 
+                        from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
+                    </p>
 
-                <h3>Influences</h3> 
-                <p>
-                    The estabilishment of the overall snytax and simplicity of the document is based on <strong>Markdown</strong>.
-                    As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
-                    This means that besides making the document human readable, it means that systems that aren't SRN 
-                    aware but are Markdown aware, can still parse the documents.
-                </p> 
-                <p>
-                    The idea of being able to extract typed meaning from the document, isn't estabilished here, rather 
-                    influcences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
-                    follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
-                    TODO domain from the document. The origins on the stanrd are similar to those of Markdown (a need 
-                    for human readability), but also a need to be able to define tasks, which are complete, what priority 
-                    a given task has, etc.
-                </p>
-            </div>
+                    <h3>Influences</h3> 
+                    <p>
+                        The estabilishment of the overall snytax and simplicity of the document is based on <strong>Markdown</strong>.
+                        As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
+                        This means that besides making the document human readable, it means that systems that aren't SRN 
+                        aware but are Markdown aware, can still parse the documents.
+                    </p> 
+                    <p>
+                        The idea of being able to extract typed meaning from the document, isn't estabilished here, rather 
+                        influcences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
+                        follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
+                        TODO domain from the document. The origins on the stanrd are similar to those of Markdown (a need 
+                        for human readability), but also a need to be able to define tasks, which are complete, what priority 
+                        a given task has, etc.
+                    </p>
+                </div>
+            </div> 
+            <div>
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-2" type="radio" />
+                <div class="section-basics">
+                    <h2>Basics</h2>
             
-            <a id="Basics"></a>
-            <div class="section-basics">
-                <h2>Basics</h2>
-            
-                <h3>The axes of an Semantic Release Notes </h3> 
-                <p>
-                    Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
-                    <ul>
-                        <li>
-                            <strong>Item</strong>:
-                            A release note should be able to show which "items" are included in a given release. This is indicated via 
-                            a standard Markdown <em>ordered</em> or <em>unorderded list</em>. 
-                        </li>
-                        <li>
-                            <strong>Section</strong>:
-                            Lets the author group items which represent logical sections within the application. 
-                            These can be abratary in nature and specifc to the release notes which application is for.
-                            This is indicated via a standard Markdown <em>header</em>. 
-                        </li>
-                        <li>
-                            <strong>Release</strong>:
-                            As SRN allows for many releases to be defined within the one block of text, the system needs 
-                            to provide a means by which an indovidual release can be identified.
-                            This is indicated via a standard Markdown <em>header</em>. 
-                        </li>
-                        <li>
-                            <strong>Project</strong>:
-                            As SRN allows for many projects with many releases to be defined within the one block of 
-                            text, the system needs to provide a means by which an indovidual release can be identified.
-                            This is indicated via a standard Markdown <em>header</em>. 
-                        </li>
-                        <li>
-                            <strong>Priority</strong>:
-                            The release note should be able to let you define the importance feature or item that has been 
-                            defined. This is indicated via a standard Markdown <em>ordered list</em>.
-                        </li>
-                        <li>
-                            <strong>Category</strong>:
-                            Additionally the release note should be able to indicate what category an item is. For instance, 
-                            "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
-                            list item that has a "+" prefix. 
-                        </li>
-                    </ul>
-                </p> 
+                    <h3>The axes of an Semantic Release Notes </h3> 
+                    <p>
+                        Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
+                        <ul>
+                            <li>
+                                <strong>Item</strong>:
+                                A release note should be able to show which "items" are included in a given release. This is indicated via 
+                                a standard Markdown <em>ordered</em> or <em>unorderded list</em>. 
+                            </li>
+                            <li>
+                                <strong>Section</strong>:
+                                Lets the author group items which represent logical sections within the application. 
+                                These can be abratary in nature and specifc to the release notes which application is for.
+                                This is indicated via a standard Markdown <em>header</em>. 
+                            </li>
+                            <li>
+                                <strong>Release</strong>:
+                                As SRN allows for many releases to be defined within the one block of text, the system needs 
+                                to provide a means by which an indovidual release can be identified.
+                                This is indicated via a standard Markdown <em>header</em>. 
+                            </li>
+                            <li>
+                                <strong>Project</strong>:
+                                As SRN allows for many projects with many releases to be defined within the one block of 
+                                text, the system needs to provide a means by which an indovidual release can be identified.
+                                This is indicated via a standard Markdown <em>header</em>. 
+                            </li>
+                            <li>
+                                <strong>Priority</strong>:
+                                The release note should be able to let you define the importance feature or item that has been 
+                                defined. This is indicated via a standard Markdown <em>ordered list</em>.
+                            </li>
+                            <li>
+                                <strong>Category</strong>:
+                                Additionally the release note should be able to indicate what category an item is. For instance, 
+                                "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
+                                list item that has a "+" prefix. 
+                            </li>
+                        </ul>
+                    </p> 
                 
-                <h3>Summaries</h3>
-                <p>
-                    It is useful to be able to provide summaries various parts of the release. Sections, Releases and Projects allow 
-                    for multi-line multi-paragraph summaries, whilst the summary for an Item is more restictive, only allowing a 
-                    single paragraph descriptions. 
-                </p>
-                <p>
-                    In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).  
-                    <div class="container">
-                        <strong>Item examples:</strong>
-                        <pre class="code"> - This is the _first_ *list* item.
+                    <h3>Summaries</h3>
+                    <p>
+                        It is useful to be able to provide summaries various parts of the release. Sections, Releases and Projects allow 
+                        for multi-line multi-paragraph summaries, whilst the summary for an Item is more restictive, only allowing a 
+                        single paragraph descriptions. 
+                    </p>
+                    <p>
+                        In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).  
+                        <div class="container">
+                            <strong>Item examples:</strong>
+                            <pre class="code"> - This is the _first_ *list* item.
  - This is the **second** __list__ item.
  - This is the `third` list item.
  - This is the [forth](?) list item.</pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                    <div class="container">
-                        <strong>Sections, Releases and Projects examples:</strong>
-                        <pre class="code">This is a _project_ summary with two paragraphs. 
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                        <div class="container">
+                            <strong>Sections, Releases and Projects examples:</strong>
+                            <pre class="code">This is a _project_ summary with two paragraphs. 
 Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
 Aliquam hendreritmi posuere lectus.
 
 Vestibulum `enim wisi` viverra nec fringilla in laoreet
 vitae risus. Donec sit amet nisl. Aliquam [semper](?) ipsum
 sit amet velit.</pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
                 
-                <h3>Items</h3>
-                <p>
-                    When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
-                    lists indicate the items what are a part of the Section or Release they are a part of.
-                </p>
-                <p>
-                    Since the syntax is a subset of Markdown the same list types are supported.  
-                    <div class="container">
-                        <strong>Release Items and Section Items examples:</strong>
-                        <pre class="code"> - This is a Release scoped first list item.
+                    <h3>Items</h3>
+                    <p>
+                        When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                        lists indicate the items what are a part of the Section or Release they are a part of.
+                    </p>
+                    <p>
+                        Since the syntax is a subset of Markdown the same list types are supported.  
+                        <div class="container">
+                            <strong>Release Items and Section Items examples:</strong>
+                            <pre class="code"> - This is a Release scoped first list item.
  - This is a Release scoped second list item.
                         
 # Section
@@ -184,23 +183,23 @@ sit amet velit.</pre>
 # Other Section
  + This is a Other Section scoped first list item.
  + This is a Other Section scoped second list item.
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
                 
-                <h3>Sections</h3>
-                <p>
-                    When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
-                    lists indicate the items what are a part of the Section or Release they are a part of. These are usually used in larger 
-                    applications when it's important to issolate out different sections of the application.
-                </p>
-                <p>
-                    Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
-                    <div class="container">
-                        <strong>Release Sections Items:</strong>
-                        <pre class="code"># Section
+                    <h3>Sections</h3>
+                    <p>
+                        When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                        lists indicate the items what are a part of the Section or Release they are a part of. These are usually used in larger 
+                        applications when it's important to issolate out different sections of the application.
+                    </p>
+                    <p>
+                        Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
+                        <div class="container">
+                            <strong>Release Sections Items:</strong>
+                            <pre class="code"># Section
 This is the summary for Section.
  - This is a Section scoped first list item.
  - This is a Section scoped second list item.
@@ -209,75 +208,75 @@ This is the summary for Section.
 This is the summary for Other Section.
  - This is a Other Section scoped first list item.
  - This is a Other Section scoped second list item.
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
                  
-                <h3>Priority</h3>
-                <p>
-                    When defining items, the priority of the fix can be expressed via a standard ordered list. Normally we expect 
-                    ordered lists index to increment sequentially upwards. For our purposes, since the index represents teh the 
-                    priority the values are always going to be 1, 2 or 3 - High, Normal and Minor. This means that when using 
-                    priorities an index value is likely to be replicated. 
-                </p>
-                <p>
-                    Since the syntax is a subset of Markdown the same ordered list types is supported. Note, the 
-                    index order isn't important.
-                    <div class="container">
-                        <strong>Release Items with Priorities defined:</strong>
-                        <pre class="code"> 1. This is a High priority list item.
+                    <h3>Priority</h3>
+                    <p>
+                        When defining items, the priority of the fix can be expressed via a standard ordered list. Normally we expect 
+                        ordered lists index to increment sequentially upwards. For our purposes, since the index represents teh the 
+                        priority the values are always going to be 1, 2 or 3 - High, Normal and Minor. This means that when using 
+                        priorities an index value is likely to be replicated. 
+                    </p>
+                    <p>
+                        Since the syntax is a subset of Markdown the same ordered list types is supported. Note, the 
+                        index order isn't important.
+                        <div class="container">
+                            <strong>Release Items with Priorities defined:</strong>
+                            <pre class="code"> 1. This is a High priority list item.
  1. This is a High priority list item. 
  2. This is a Normal priority list item. 
  1. This is a High priority list item. 
  2. This is a Normal priority list item.
  3. This is a Minor priority list item.
  3. This is a Minor priority list item. 
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
 
-                <h3>Category</h3>
-                <p>
-                    When creating creating items it's useful to be able to assign a Category to an item. These Categories are 
-                    fixed to the following types - New, Fix, Changed and Developer (where Developer describes a change that 
-                    developers would be interested over users).
-                </p>
-                <p>
-                    Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation at 
-                    the end of the item "+New".
-                    <div class="container">
-                        <strong>Release Items and Section Items examples:</strong>
-                        <pre class="code"> - This is a New list item. +New
+                    <h3>Category</h3>
+                    <p>
+                        When creating creating items it's useful to be able to assign a Category to an item. These Categories are 
+                        fixed to the following types - New, Fix, Changed and Developer (where Developer describes a change that 
+                        developers would be interested over users).
+                    </p>
+                    <p>
+                        Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation at 
+                        the end of the item "+New".
+                        <div class="container">
+                            <strong>Release Items and Section Items examples:</strong>
+                            <pre class="code"> - This is a New list item. +New
  - This is a Fix list item. +Fix
  - This is a Change list item. +Change
  - This is a New list item. +New
  - This is a Developer list item. +Developer
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
             
-                <h3>Release (Not Working)</h3>
-                <p>
-                    In some cases we want to have the one document that describes many releases. In this case, the 
-                    syntax simply allows you to define a heading which is the Version Number. If you use this feature 
-                    in conjunction with sections, Section headers are also altered.
-                </p>
-                <p>
-                    For the purposes of interpretation of the version number, it is assumed that you are using 
-                    Semantic Visioning - <a href="http://semver.org/">http://semver.org/</a>.
-                </p>
-                <p>
-                    Normal Markdown headers are used to describe the version number for each release and the scope 
-                    of reach release (which item, etc makes up the release).
-                    <div class="container">
-                        <strong>Multiple Release examples:</strong>
-                        <pre class="code"># 1.1
+                    <h3>Release (Not Working)</h3>
+                    <p>
+                        In some cases we want to have the one document that describes many releases. In this case, the 
+                        syntax simply allows you to define a heading which is the Version Number. If you use this feature 
+                        in conjunction with sections, Section headers are also altered.
+                    </p>
+                    <p>
+                        For the purposes of interpretation of the version number, it is assumed that you are using 
+                        Semantic Visioning - <a href="http://semver.org/">http://semver.org/</a>.
+                    </p>
+                    <p>
+                        Normal Markdown headers are used to describe the version number for each release and the scope 
+                        of reach release (which item, etc makes up the release).
+                        <div class="container">
+                            <strong>Multiple Release examples:</strong>
+                            <pre class="code"># 1.1
 This is the release summary for 1.1
 
 # 1.2
@@ -285,13 +284,13 @@ This is the release summary for 1.2
 
 # 2.0
 This is the release summary for 2.0
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div>  
-                    <div class="container">
-                        <strong>Multiple Release with Sections examples:</strong>
-                        <pre class="code"># 1.1
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div>  
+                        <div class="container">
+                            <strong>Multiple Release with Sections examples:</strong>
+                            <pre class="code"># 1.1
 This is the release summary for 1.1
 
 ## Section
@@ -314,25 +313,26 @@ This is the summary for Section for 2.0.
 
 ## Other Section
 This is the summary for Other Section for 2.0.
-                        </pre>
-                        <div class="result"></div>
-                        <pre class="object"></pre>
-                    </div> 
-                </p>
+                            </pre>
+                            <div class="result"></div>
+                            <pre class="object"></pre>
+                        </div> 
+                    </p>
 
             
-                <h3>Project (Not Working)</h3>
-                <p>
-                    In the same way that we may want to have a document that contains many Releases, we may want 
-                    to have a document that contains many Projects. In this case, the syntax simply allows you 
-                    to define a heading which is the Project name. If you use this feature, it assumes that you 
-                    will also provide the Release details (Version Numbers) for each release. When this is done,
-                    Release and Section headers are also altered.
-                </p>
-            </div>
-
-            <a id="Syntax"></a>
-            <div class="section-syntax"> 
+                    <h3>Project (Not Working)</h3>
+                    <p>
+                        In the same way that we may want to have a document that contains many Releases, we may want 
+                        to have a document that contains many Projects. In this case, the syntax simply allows you 
+                        to define a heading which is the Project name. If you use this feature, it assumes that you 
+                        will also provide the Release details (Version Numbers) for each release. When this is done,
+                        Release and Section headers are also altered.
+                    </p>
+                </div>
+            </div> 
+            <div>
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-3" type="radio" />
+                <div class="section-syntax"> 
                 <h2>Syntax</h2>
                 <div class="section-editor">
 
@@ -414,9 +414,10 @@ This description is specific to plugin section.
                     </ul>
                 <//div>
             </div>
-
-            <a id="Editor"></a>
-            <div class="section-editor">
+            </div> 
+            <div>
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-4" type="radio" />
+                <div class="section-editor">
                 <h2>Live Editor</h2> 
                 <div class="section-editor"> 
                     <textarea class="editor">Incremental release designed to provide a update to some of the core plugins.
@@ -436,19 +437,22 @@ This description is specific to plugin section.
                     </div>
                 </div>
             </div>
-
-            <a id="Micro-Format"></a>
-            <div class="section-micro-format">
+            </div> 
+            <div> 
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-5" type="radio" />
+                <div class="section-micro-format">
                 <h2>Micro Format</h2>
 
 
             </div>
-
-            <a id="Acknowledgements"></a>
-            <div class="section-acknowledgements">
-                <h2>Acknowledgements</h2>
-                <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
-                for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+            </div> 
+            <div>
+                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-6" type="radio" />
+                <div class="section-acknowledgements">
+                    <h2>Acknowledgements</h2>
+                    <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
+                    for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+                </div>
             </div>
         </div>  
         <footer>
@@ -457,11 +461,9 @@ This description is specific to plugin section.
     </div>
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-     
-    <script src="js/script.js"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script> 
+    <script src="js/script.js"></script> 
     <script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
