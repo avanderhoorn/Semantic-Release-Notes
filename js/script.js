@@ -13,7 +13,7 @@ var processSyntax = (function () {
                         obj.push(match[2]);
                     }
                     else
-                        obj[input[1]] = input[2];
+                        obj[match[1]] = match[2];
                 }
                         
                 return obj;
