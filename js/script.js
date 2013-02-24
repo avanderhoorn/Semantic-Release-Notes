@@ -281,12 +281,16 @@ $(function() {
         ulNext.find('li[data-tab="' + index + '"]').addClass('active'); 
     });
 
-    $('.execute').click(function() {
-        var scope = $(this).closest('.section-editor'),
+    var execute = function() {
+        var scope = $('.execute').closest('.section-editor'),
             text = scope.find('.editor').val();
         process(scope, text);
         scope.find('.result-container').show();
+    };
+    $('.execute').click(function() {
+        execute();
     });
+    execute();
 });
 
 

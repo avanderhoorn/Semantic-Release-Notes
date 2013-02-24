@@ -24,11 +24,10 @@
                 </div>
                 <ul>
                     <li><label class="menu-root-item" for="menu-root-radio-1">Main</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-2">Basics</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-3">Syntax</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-2">Syntax</label></li>
+                    <li><label class="menu-root-item" for="menu-root-radio-3">Basics</label></li>
                     <li><label class="menu-root-item" for="menu-root-radio-4">Live Editor</label></li>
                     <li><label class="menu-root-item" for="menu-root-radio-5">Micro Format</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-6">Acknowledgements</label></li>
                 </ul>
             </div>
         </div>  
@@ -85,19 +84,25 @@
                         for human readability), but also a need to be able to define tasks, which are complete, what priority 
                         a given task has, etc.
                     </p>
+                    
+                    <h3>Acknowledgements</h3> 
+                    <p>
+                        <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
+                        for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+                    </p>
                 </div>
             </div> 
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-2" type="radio" />
                 <div class="section-basics">
-                    <h2>Basics</h2>
+                    <h2>Syntax</h2>
             
                     <h3>The axes of an Semantic Release Notes </h3> 
                     <p>
                         Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
                         <ul>
                             <li>
-                                <strong>Summaries</strong>:
+                                <strong>Summary</strong>:
                                 At its most basic level, SRN should be able to take a paragraph and interprete that as the summary 
                                 of what the release is about. 
                             </li>
@@ -113,6 +118,17 @@
                                 This is indicated via a standard Markdown <em>header</em>. 
                             </li>
                             <li>
+                                <strong>Priority</strong>:
+                                The release note should be able to let you define the importance feature or item that has been 
+                                defined. This is indicated via a standard Markdown <em>ordered list</em>.
+                            </li>
+                            <li>
+                                <strong>Category</strong>:
+                                Additionally the release note should be able to indicate what category an item is. For instance, 
+                                "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
+                                list item that has a "+" prefix. 
+                            </li>
+                            <li>
                                 <strong>Release</strong>:
                                 As SRN allows for many releases to be defined within the one block of text, the system needs 
                                 to provide a means by which an indovidual release can be identified.
@@ -123,17 +139,6 @@
                                 As SRN allows for many projects with many releases to be defined within the one block of 
                                 text, the system needs to provide a means by which an indovidual release can be identified.
                                 This is indicated via a standard Markdown <em>header</em>. 
-                            </li>
-                            <li>
-                                <strong>Priority</strong>:
-                                The release note should be able to let you define the importance feature or item that has been 
-                                defined. This is indicated via a standard Markdown <em>ordered list</em>.
-                            </li>
-                            <li>
-                                <strong>Category</strong>:
-                                Additionally the release note should be able to indicate what category an item is. For instance, 
-                                "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
-                                list item that has a "+" prefix. 
                             </li>
                         </ul>
                     </p> 
@@ -146,19 +151,19 @@
                     </p>
                     <p>
                         In each content block, a subset of Markdown is supported -  _italic_, **bold**, `code` and [link](uri).
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            <pre class="code">This is a _project_ summary with two paragraphs. 
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        <pre class="code">This is a _project_ summary with two paragraphs. 
 Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
 Aliquam hendreritmi posuere lectus.
 
 Vestibulum `enim wisi` viverra nec fringilla in laoreet
 vitae risus. Donec sit amet nisl. Aliquam [semper](?) ipsum
 sit amet velit.</pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                    </p>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
                 
                     <h3>Items</h3>
                     <p>
@@ -167,16 +172,16 @@ sit amet velit.</pre>
                     </p>
                     <p>
                         Since the syntax is a subset of Markdown the same list types are supported.   
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            <pre class="code"> - This is the _first_ *list* item.
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        <pre class="code"> - This is the _first_ *list* item.
  - This is the **second** __list__ item.
  - This is the `third` list item.
  - This is the [forth](?) list item.</pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                    </p>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
                 
                     <h3>Sections</h3>
                     <p>
@@ -186,9 +191,10 @@ sit amet velit.</pre>
                     </p>
                     <p>
                         Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            <pre class="code"># Section
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        <pre class="code"># Section
 This is the summary for Section.
  - This is a Section scoped first list item.
  - This is a Section scoped second list item.
@@ -197,11 +203,10 @@ This is the summary for Section.
 This is the summary for Other Section.
  - This is a Other Section scoped first list item.
  - This is a Other Section scoped second list item.
-                            </pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                    </p>
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
                  
                     <h3>Priority</h3>
                     <p>
@@ -213,20 +218,20 @@ This is the summary for Other Section.
                     <p>
                         Since the syntax is a subset of Markdown the same ordered list types is supported. Note, the 
                         index order isn't important.
-                        <div class="container">
-                            <strong>Example:</strong>
-                            <pre class="code"> 1. This is a High priority list item.
+                    </p>
+                    <div class="container">
+                        <strong>Example:</strong>
+                        <pre class="code"> 1. This is a High priority list item.
  1. This is a High priority list item. 
  2. This is a Normal priority list item. 
  1. This is a High priority list item. 
  2. This is a Normal priority list item.
  3. This is a Minor priority list item.
  3. This is a Minor priority list item. 
-                            </pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                    </p>
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
 
                     <h3>Category</h3>
                     <p>
@@ -237,18 +242,18 @@ This is the summary for Other Section.
                     <p>
                         Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation at 
                         the end of the item "+New".
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            <pre class="code"> - This is a New list item. +New
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        <pre class="code"> - This is a New list item. +New
  - This is a Fix list item. +Fix
  - This is a Change list item. +Change
  - This is a New list item. +New
  - This is a Developer list item. +Developer
-                            </pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                        </div> 
-                    </p>
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
             
                     <h3>Release (Not Working)</h3>
                     <p>
@@ -258,16 +263,15 @@ This is the summary for Other Section.
                     </p>
                     <p>
                         For the purposes of interpretation of the version number, it is assumed that you are using 
-                        Semantic Visioning - <a href="http://semver.org/">http://semver.org/</a>.
-                    </p>
-                    <p>
-                        Normal Markdown headers are used to describe the version number for each release and the scope 
+                        Semantic Visioning - <a href="http://semver.org/">http://semver.org/</a>. Normal Markdown headers 
+                        are used to describe the version number for each release and the scope 
                         of reach release (which item, etc makes up the release).
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            Not yet specified.
-                            <!--
-                            <pre class="code"># 1.1
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        Not yet specified.
+                        <!--
+                        <pre class="code"># 1.1
 This is the release summary for 1.1
 
 # 1.2
@@ -275,16 +279,15 @@ This is the release summary for 1.2
 
 # 2.0
 This is the release summary for 2.0
-                            </pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                            -->
-                        </div>  
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            Not yet specified.
-                            <!--
-                            <pre class="code"># 1.1
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                        -->
+                    </div><!--
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        Not yet specified.
+                        <pre class="code"># 1.1
 This is the release summary for 1.1
 
 ## Section
@@ -307,14 +310,11 @@ This is the summary for Section for 2.0.
 
 ## Other Section
 This is the summary for Other Section for 2.0.
-                            </pre>
-                            <div class="result"></div>
-                            <pre class="object"></pre>
-                            -->
-                        </div> 
-                    </p>
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div>-->
 
-            
                     <h3>Project (Not Working)</h3>
                     <p>
                         In the same way that we may want to have a document that contains many Releases, we may want 
@@ -322,59 +322,59 @@ This is the summary for Other Section for 2.0.
                         to define a heading which is the Project name. If you use this feature, it assumes that you 
                         will also provide the Release details (Version Numbers) for each release. When this is done,
                         Release and Section headers are also altered.
-                        <div class="container">
-                            <strong>Examples:</strong>
-                            Not yet specified.
-                        </div>
                     </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        Not yet specified.
+                    </div>
                 </div>
             </div> 
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-3" type="radio" />
                 <div class="section-syntax"> 
-                <h2>Syntax</h2>
-                <div class="section-editor">
+                    <h2>Basics</h2>
+                    <div class="section-editor">
 
-                    <h3>Working Examples</h3>
-                    <ul class="tabs">
-                        <li><a class="active" data-tab="1">Example A</a></li>
-                        <li><a data-tab="2">Example B</a></li>
-                        <li><a data-tab="3">Example C</a></li>
-                        <li><a data-tab="4">Example D</a></li>
-                    </ul> 
-                    <ul class="tabs-content example">
-                        <li class="active container" data-tab="1">
-                            <strong>Source:</strong>
-                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                        <h3>Working Examples</h3>
+                        <ul class="tabs">
+                            <li><a class="active" data-tab="1">Example A</a></li>
+                            <li><a data-tab="2">Example B</a></li>
+                            <li><a data-tab="3">Example C</a></li>
+                            <li><a data-tab="4">Example D</a></li>
+                        </ul> 
+                        <ul class="tabs-content example">
+                            <li class="active container" data-tab="1">
+                                <strong>Source:</strong>
+                                <pre class="code">Incremental release designed to provide a update to some of the core plugins.
 
  - Release Checker: Now gives you a breakdown of exactly what you are missing. +New
  - Structured Layout: An alternative layout engine that allows developers to control layout. +New
  - Timeline: Comes with an additional grid view to show the same data. +Changed
  - Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</pre>
-                            <strong>Result:</strong>
-                            <div class="result"></div>
-                            <strong>Object:</strong>
-                            <pre class="object"></pre>
-                        </li>
-                        <li class="container" data-tab="2">
-                            <strong>Source:</strong>
-                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                                <strong>Result:</strong>
+                                <div class="result"></div>
+                                <strong>Object:</strong>
+                                <pre class="object"></pre>
+                            </li>
+                            <li class="container" data-tab="2">
+                                <strong>Source:</strong>
+                                <pre class="code">Incremental release designed to provide a update to some of the core plugins.
 
 # System
  - *Release Checker*: Now gives you a breakdown of exactly what you are missing. +New
  - *Structured Layout*: An alternative layout engine that allows developers to control layout. +New
-
+ 
 # Plugin
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</pre>
-                            <strong>Result:</strong>
-                            <div class="result"></div>
-                            <strong>Object:</strong>
-                            <pre class="object"></pre>
-                        </li>
-                        <li class="container" data-tab="3">
-                            <strong>Source:</strong>
-                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                                <strong>Result:</strong>
+                                <div class="result"></div>
+                                <strong>Object:</strong>
+                                <pre class="object"></pre>
+                            </li>
+                            <li class="container" data-tab="3">
+                                <strong>Source:</strong>
+                                <pre class="code">Incremental release designed to provide a update to some of the core plugins.
  - *Example*: You can have global issues that aren't grouped to a section
 
 # System
@@ -386,14 +386,14 @@ This description is specific to system section.
 This description is specific to plugin section.
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
-                            <strong>Result:</strong>
-                            <div class="result"></div>
-                            <strong>Object:</strong>
-                            <pre class="object"></pre>
-                        </li>
-                        <li class="container" data-tab="4">
-                            <strong>Source:</strong>
-                            <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+                                <strong>Result:</strong>
+                                <div class="result"></div>
+                                <strong>Object:</strong>
+                                <pre class="object"></pre>
+                            </li>
+                            <li class="container" data-tab="4">
+                                <strong>Source:</strong>
+                                <pre class="code">Incremental release designed to provide a update to some of the core plugins.
  1. *Example*: You can have global issues that aren't grouped to a section
 
 # System [[icon][http://getglimpse.com/release/icon/core.png]]
@@ -405,54 +405,46 @@ This description is specific to system section.
 This description is specific to plugin section.
  1. *Timeline*: Comes with an additional grid view to show the same data. +Changed
  1. *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
-                            <strong>Result:</strong>
-                            <div class="result"></div>
-                            <strong>Object:</strong>
-                            <pre class="object"></pre>
-                        </li>
-                    </ul>
-                <//div>
-            </div>
+                                <strong>Result:</strong>
+                                <div class="result"></div>
+                                <strong>Object:</strong>
+                                <pre class="object"></pre>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div> 
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-4" type="radio" />
                 <div class="section-editor">
-                <h2>Live Editor</h2> 
-                <div class="section-editor"> 
-                    <textarea class="editor">Incremental release designed to provide a update to some of the core plugins.
+                    <h2>Live Editor</h2> 
+                    <div class="section-editor"> 
+                        <textarea class="editor" style="height:180px;">Incremental release designed to provide a update to some of the core plugins.
 
  - Release Checker: Now gives you a breakdown of exactly what you are missing. +New
  - Structured Layout: An alternative layout engine that allows developers to control layout. +New
  - Timeline: Comes with an additional grid view to show the same data. +Changed
  - Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</textarea>
-                    <div class="center">
-                        <button class="execute">Parse!</button>
-                    </div>
-                    <div class="result-container">
-                        <strong>Result:</strong>
-                        <div class="result"></div>
-                        <strong>Object:</strong>
-                        <pre class="object"></pre>
+                        <div class="center">
+                            <button class="execute">Parse!</button>
+                        </div>
+                        <div class="result-container">
+                            <strong>Result:</strong>
+                            <div class="result"></div>
+                            <strong>Object:</strong>
+                            <pre class="object"></pre>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div> 
             <div> 
                 <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-5" type="radio" />
                 <div class="section-micro-format">
-                <h2>Micro Format</h2>
+                    <h2>Micro Format</h2>
 
 
-            </div>
-            </div> 
-            <div>
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-6" type="radio" />
-                <div class="section-acknowledgements">
-                    <h2>Acknowledgements</h2>
-                    <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
-                    for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
                 </div>
-            </div>
+            </div> 
         </div>  
         <footer>
             Copyright &copy; 2012 Anthony van der Hoorn &amp; Nik Molnar
