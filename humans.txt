@@ -18,5 +18,5 @@
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software:
+  Components: jQuery
+  Software: notepad
