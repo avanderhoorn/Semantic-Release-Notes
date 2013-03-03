@@ -38,7 +38,7 @@
                 <div class="section-main">
                     <p>
                         Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
-                        specificly aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
+                        specifically aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
                         This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
                         (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
                         typed information within 3rd party applications.
@@ -49,7 +49,7 @@
                             <li>a plain text formatting syntax; and</li>
                             <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
                         </ol>
-                        See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN fomatting syntax. You can 
+                        See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN formatting syntax. You can 
                         also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
                         examples.  
                     </p>
@@ -64,30 +64,30 @@
                         </ul> 
                         The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
                         without looking like it's been marked up with tags or formatting instructions. This works well in a 
-                        Release Notes senario where plan text documents usually accompany the build. Additional, with the 
-                        assumtptions around the formating of the Release document, SRN can <strong>extract semantic meaning</strong> 
+                        Release Notes scenario where plan text documents usually accompany the build. Additional, with the 
+                        assumptions around the formatting of the Release document, SRN can <strong>extract semantic meaning</strong> 
                         from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
                     </p>
 
                     <h3>Influences</h3> 
                     <p>
-                        The estabilishment of the overall snytax and simplicity of the document is based on <strong>Markdown</strong>.
+                        The establishment  of the overall syntax and simplicity of the document is based on <strong>Markdown</strong>.
                         As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
                         This means that besides making the document human readable, it means that systems that aren't SRN 
                         aware but are Markdown aware, can still parse the documents.
                     </p> 
                     <p>
-                        The idea of being able to extract typed meaning from the document, isn't estabilished here, rather 
-                        influcences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
+                        The idea of being able to extract typed meaning from the document, isn't established here, rather 
+                        influences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
                         follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
-                        TODO domain from the document. The origins on the stanrd are similar to those of Markdown (a need 
+                        TODO domain from the document. The origins on the standard are similar to those of Markdown (a need 
                         for human readability), but also a need to be able to define tasks, which are complete, what priority 
                         a given task has, etc.
                     </p>
                     
                     <h3>Acknowledgements</h3> 
                     <p>
-                        <a href="http://daringfireball.net">John Gruber</a> deserves a tremndous amout of credit 
+                        <a href="http://daringfireball.net">John Gruber</a> deserves a tremendous amount of credit 
                         for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
                     </p>
                 </div>
@@ -99,11 +99,11 @@
             
                     <h3>The axes of an Semantic Release Notes </h3> 
                     <p>
-                        Using the Markdown syntax in a SRN, you can create a list that's sliceable by various key axes.
+                        Using the Markdown syntax in a SRN, you can create a list that can be broken along various key axes.
                         <ul>
                             <li>
                                 <strong>Summary</strong>:
-                                At its most basic level, SRN should be able to take a paragraph and interprete that as the summary 
+                                At its most basic level, SRN should be able to take a paragraph and interpreter that as the summary 
                                 of what the release is about. 
                             </li>
                             <li>
@@ -114,7 +114,7 @@
                             <li>
                                 <strong>Section</strong>:
                                 Lets the author group items which represent logical sections within the application. 
-                                These can be abratary in nature and specifc to the release notes which application is for.
+                                These can be arbitrary in nature and specific to the release notes which application is for.
                                 This is indicated via a standard Markdown <em>header</em>. 
                             </li>
                             <li>
@@ -131,13 +131,13 @@
                             <li>
                                 <strong>Release</strong>:
                                 As SRN allows for many releases to be defined within the one block of text, the system needs 
-                                to provide a means by which an indovidual release can be identified.
+                                to provide a means by which an individual release can be identified.
                                 This is indicated via a standard Markdown <em>header</em>. 
                             </li>
                             <li>
                                 <strong>Project</strong>:
                                 As SRN allows for many projects with many releases to be defined within the one block of 
-                                text, the system needs to provide a means by which an indovidual release can be identified.
+                                text, the system needs to provide a means by which an individual release can be identified.
                                 This is indicated via a standard Markdown <em>header</em>. 
                             </li>
                         </ul>
@@ -146,7 +146,7 @@
                     <h3>Summaries</h3>
                     <p>
                         It is useful to be able to provide summaries various parts of the release. Sections, Releases and Projects allow 
-                        for multi-line multi-paragraph summaries, whilst the summary for an Item is more restictive, only allowing a 
+                        for multi-line multi-paragraph summaries, whilst the summary for an Item is more restrictive, only allowing a 
                         single paragraph descriptions. 
                     </p>
                     <p>
@@ -167,7 +167,7 @@ sit amet velit.</pre>
                 
                     <h3>Items</h3>
                     <p>
-                        When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                        When trying to extract individual items that make up a release, standard lists (ordered or unordered) are used. These 
                         lists indicate the items what are a part of the Section or Release they are a part of.
                     </p>
                     <p>
@@ -185,9 +185,9 @@ sit amet velit.</pre>
                 
                     <h3>Sections</h3>
                     <p>
-                        When trying to extract indovidual items that make up a release, standard lists (ordered or unordered) are used. These 
+                        When trying to extract individual items that make up a release, standard lists (ordered or unordered) are used. These 
                         lists indicate the items what are a part of the Section or Release they are a part of. These are usually used in larger 
-                        applications when it's important to issolate out different sections of the application.
+                        applications when it's important to isolate out different sections of the application.
                     </p>
                     <p>
                         Sections are expressed through the use of headings. Also sections can have their own "Summaries" and "Items".
@@ -211,7 +211,7 @@ This is the summary for Other Section.
                     <h3>Priority</h3>
                     <p>
                         When defining items, the priority of the fix can be expressed via a standard ordered list. Normally we expect 
-                        ordered lists index to increment sequentially upwards. For our purposes, since the index represents teh the 
+                        ordered lists index to increment sequentially upwards. For our purposes, since the index represents the the 
                         priority the values are always going to be 1, 2 or 3 - High, Normal and Minor. This means that when using 
                         priorities an index value is likely to be replicated. 
                     </p>
