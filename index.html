@@ -80,16 +80,17 @@
             
                     <h3>Goals</h3> 
                     <p>
-                        The overriding design goals for SRN's formatting syntax is:
+                        The overriding design goals for SRN's syntax is:
                         <ul>
                             <li>to make it as <strong>readable as possible</strong>,</li>
+                            <li>to <strong>support various formats</strong> in which release notes are published (Example: <a href="http://docs.nuget.org/docs/reference/nuspec-reference">NuSpec XML</a>),</li>
                             <li>to make this document <strong>parsable by a standard Markdown parser</strong>, and</li>
-                            <li>to <strong>extract typed release information</strong> from the document.</li>
+                            <li>to <strong>extract semantic release information</strong> from the document for further processing.</li>
                         </ul> 
-                        The idea is that a SRN-formatted document should be publishable as-is, as plain text, 
+                        The idea is that a SRN document should be publishable as-is, as plain text, 
                         without looking like it's been marked up with tags or formatting instructions. This works well in a 
-                        Release Notes scenario where plan text documents usually accompany the build. Additional, with the 
-                        assumptions around the formatting of the Release document, SRN can <strong>extract semantic meaning</strong> 
+                        Release Notes scenario where plain text documents usually accompany the build. Additional, with the 
+                        assumptions around the formatting of the release document, SRN can <strong>extract semantic meaning</strong> 
                         from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
                     </p> 
                     <p>
@@ -112,15 +113,15 @@
 
                     <h3>Influences</h3> 
                     <p>
-                        The establishment  of the overall syntax and simplicity of the document is based on <strong>Markdown</strong>.
+                        The establishment of the overall syntax and simplicity of the SRN syntax is based on <strong>Markdown</strong>.
                         As stated, a document based on SRN's syntax should be able to be parsed by a standard Markdown parser. 
                         This means that besides making the document human readable, it means that systems that aren't SRN 
                         aware but are Markdown aware, can still parse the documents.
                     </p> 
                     <p>
-                        The idea of being able to extract typed meaning from the document, isn't established here, rather 
-                        influences where drawn from the typed format of <strong>TODO.txt</strong> files. Documents that 
-                        follow the conventions of the TODO.txt "standard" are able to extract typed information within the 
+                        The idea of being able to extract semantic meaning from the release notes, isn't established here, rather 
+                        influences where drawn from the semantic syntax of <strong>Todo.txt</strong> files. Documents that 
+                        follow the conventions of the Todo.txt "standard" are able to extract typed information within the 
                         TODO domain from the document. The origins on the standard are similar to those of Markdown (a need 
                         for human readability), but also a need to be able to define tasks, which are complete, what priority 
                         a given task has, etc.
@@ -129,7 +130,8 @@
                     <h3>Acknowledgements</h3> 
                     <p>
                         <a href="http://daringfireball.net">John Gruber</a> deserves a tremendous amount of credit 
-                        for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.
+                        for this original work on <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, as does 
+                        <a href="http://ginatrapani.org/">Gina Trapani</a> and her work on <a href="http://todotxt.com/">Todo.txt</a>.
                     </p>
                 </div>
             </div> 
@@ -138,18 +140,19 @@
                 <div class="section-basics">
                     <h2>Syntax</h2>
             
-                    <h3>The axes of an Semantic Release Notes </h3> 
+                    <h3>The axes of Semantic Release Notes </h3> 
                     <p>
-                        Using the Markdown syntax in a SRN, you can create a list that can be broken along various key axes.
+                        Using the SRN syntax, you can create a list that can be broken along various key axes.
                         <ul>
                             <li>
                                 <strong>Summary</strong>:
-                                At its most basic level, SRN should be able to take a paragraph and interpreter that as the summary 
-                                of what the release is about. 
+                                At its most basic level, SRN should be able to take a paragraph and interpret that as the summary 
+                                of a given release. 
                             </li>
                             <li>
                                 <strong>Item</strong>:
-                                A release note should be able to show which "items" are included in a given release. This is indicated via 
+                                A release note should be able to show which "items" are included in a given release. Items typically include 
+                                features, bug fixes, or improvements. This is indicated via 
                                 a standard Markdown <em>ordered</em> or <em>unorderded</em> list. 
                             </li>
                             <li>
