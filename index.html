@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>Semantic Release Notes</title>
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width">
@@ -23,43 +23,43 @@
                     By <strong>Anthony van der Hoorn</strong><br /> &amp; <strong>Nik Molnar</strong> 
                 </div>
                 <ul>
-                    <li><label class="menu-root-item" for="menu-root-radio-1">Main</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-2">Syntax</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-3">Basics</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-4">Live Editor</label></li>
-                    <li><label class="menu-root-item" for="menu-root-radio-5">Micro Format</label></li>
+                    <li><a href="#Main">Main</a></li>
+                    <li><a href="#Syntax">Syntax</a></li>
+                    <li><a href="#Examples">Examples</a></li>
+                    <li><a href="#Editor">Live Editor</a></li>
+                    <li><a href="#MicroFormat">Micro Format</a></li>
                 </ul>
             </div>
         </div>  
         <div class="box">
             <h1>Semantic Release Notes</h1> 
             <div style="width:95%; margin: auto; background-color: lightyellow; border: 1px solid goldenrod; color: goldenrod; margin-top: -15px; padding: 10px 0; text-align: center;">
-                <strong>NOTE:</strong> SRN is currently a proposal and requires feedback.<br />To make it better please join in the conversation at our <a href="https://github.com/Glimpse/Semantic-Release-Notes/issues">Github repository</a>.
+                <strong>NOTE:</strong> SRN is currently a proposal and requires feedback.<br />To make it better please join in the conversation at our <a href="https://github.com/Glimpse/Semantic-Release-Notes/issues">GitHub repository</a>.
             </div>
             <div>
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-1" type="radio" checked="checked" />
+                <input name="menu-root-radio" class="menu-root-radio" id="Main" type="radio" checked="checked" />
                 <div class="section-main">
                     <p>
                         Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
-                        specifically aims to produce <em>typed</em> <strong>Release Notes</strong> from a <strong>Markdown</strong> document. 
-                        This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to structured object 
-                        (typically JSON or XML) and from this object, convert it into any styled format (typically html) or to consume the 
-                        typed information within 3rd party applications.
+                        specifically aims to produce <em>semantic</em> <strong>release notes</strong> from a Markdown document. 
+                        This allows authors to write using an easy-to-read, easy-to-write plain text document, convert it to a structured data format
+                        (typically JSON or XML) and from this format, convert it into any styled representation (typically html) or to consume the 
+                        information programatically within 3rd party applications.
                     </p> 
                     <p>
                         Thus, SRN is two things:
                         <ol>
-                            <li>a plain text formatting syntax; and</li>
-                            <li>a software tool that converts plain text formatting to JSON/XML and HTML.</li>
+                            <li>a plain text DSL (domain specific language)/syntax for writting release notes; and</li>
+                            <li>a software tool that converts said syntax into JSON/XML and subsequently HTML.</li>
                         </ol>
-                        See the <a href="#Syntax">Syntax</a> section for details pertaining to SRN formatting syntax. You can 
-                        also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
-                        examples.  
+                        For details pertaining to SRN formatting, see the <a href="#Syntax">Syntax</a> section or 
+                        try it out, right now, using the <a href="#Editor">Live Editor</a> or by extending the provided <a href="#Examples"> 
+                        Examples</a>.
                     </p>
 
                     <h3>Why</h3>
                     <p>
-                        With the way that we currently approach producing release notes, we loose any ability to "process" the data.
+                        With the way that we currently approach producing release notes, we lose any ability to "process" the data.
                         If we change this and produce something that can be, a variety of different possibilities can be realized.
                     </p>
                     <p>
@@ -134,7 +134,7 @@
                 </div>
             </div> 
             <div>
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-2" type="radio" />
+                <input name="menu-root-radio" class="menu-root-radio" id="Syntax" type="radio" />
                 <div class="section-basics">
                     <h2>Syntax</h2>
             
@@ -371,12 +371,10 @@ This is the summary for Other Section for 2.0.
                 </div>
             </div> 
             <div>
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-3" type="radio" />
+                <input name="menu-root-radio" class="menu-root-radio" id="Examples" type="radio" />
                 <div class="section-syntax"> 
-                    <h2>Basics</h2>
+                    <h2>Examples</h2>
                     <div class="section-editor">
-
-                        <h3>Working Examples</h3>
                         <ul class="tabs">
                             <li><a class="active" data-tab="1">Example A</a></li>
                             <li><a data-tab="2">Example B</a></li>
@@ -462,7 +460,7 @@ This description is specific to plugin section.
                 </div>
             </div> 
             <div>
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-4" type="radio" />
+                <input name="menu-root-radio" class="menu-root-radio" id="Editor" type="radio" />
                 <div class="section-editor">
                     <h2>Live Editor</h2> 
                     <div class="section-editor">
@@ -486,7 +484,7 @@ This description is specific to plugin section.
                 </div>
             </div> 
             <div> 
-                <input name="menu-root-radio" class="menu-root-radio" id="menu-root-radio-5" type="radio" />
+                <input name="menu-root-radio" class="menu-root-radio" id="MicroFormat" type="radio" />
                 <div class="section-micro-format">
                     <h2>Micro Format</h2>
 

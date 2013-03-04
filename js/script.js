@@ -260,7 +260,16 @@ var process = function(scope, text) {
     scope.find('.object').html(stringData); 
 };
 
+var navigate = function (evt) {
+    $(location.hash).attr('checked', 'checked');
+};
+
 $(function() {
+
+    if (location.hash)
+        navigate();
+
+    $(window).on('hashchange', navigate);
 
     $('.code').each(function(){
         var scope = $(this).closest('.container'),
