@@ -56,6 +56,27 @@
                         also try it out, right now, using the online <a href="#Editor">Editor</a> or extending the provided 
                         examples.  
                     </p>
+
+                    <h3>Why</h3>
+                    <p>
+                        With the way that we currently approach producing release notes, we loose any ability to "process" the data.
+                        If we change this and produce something that can be, a variety of different possibilities can be realized.
+                    </p>
+                    <p>
+                        Currently, most projects use either the following approaches:
+                        <ol>
+                            <li>a single document which lists every release, with the details of each release, or</li>
+                            <li>a document which only shows the details or the latest release, or</li>
+                            <li>a generated document which only shows the details of every release between what they had installed an how have.</li>
+                        </ol>
+                        These are mostly problematic as they aren't able to isolate which details the user should know about and in
+                        most cases, drowns the user in more information than they can/want to take in.
+                    </p>
+                    <p>
+                        What we should be aiming for, is to help the users find what is the most important information 
+                        they should know about. If we do this, users are more likely to find the information we as 
+                        developers want them to know about and be educated as to what items in the release they may care about
+                    </p>
             
                     <h3>Goals</h3> 
                     <p>
@@ -70,6 +91,23 @@
                         Release Notes scenario where plan text documents usually accompany the build. Additional, with the 
                         assumptions around the formatting of the Release document, SRN can <strong>extract semantic meaning</strong> 
                         from the plain text provided (i.e. the bugs fixed, features, included, release summaries, etc).
+                    </p> 
+                    <p>
+                        Once we have the type representations, we can then look at producing the following:
+                        <ul>
+                            <li>
+                                if a user updates through multiple versions of your product, be able to easily produce 
+                                a consolidated release note can be which highlights the most important changes,
+                            </li>
+                            <li>
+                                the above would also be true if the user wanted to view the changes that occurred 
+                                between take 2 different releases - in effect producing a "diff" at the release notes level
+                            </li>
+                            <li>
+                                be able to change the rendered display of the release notes, without changing the format of the 
+                                original source
+                            </li>
+                        </ul>
                     </p>
 
                     <h3>Influences</h3> 
