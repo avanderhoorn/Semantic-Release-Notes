@@ -143,7 +143,7 @@ ul.custom > li:before { content: attr(data-content) '.'; padding-right: 7px; }
     .box, header, footer { width: 100%; float: none; position: relative; }
     .author { margin-bottom: 1em; }
     .header-inner, .footer-inner { margin: 0px; }
-    .header-inner ul { text-align: center; }
+    .header-inner ul { text-align: center; padding:0; }
     .header-inner li { display: inline-block; margin:0 1em; }
 } 
 
