@@ -95,7 +95,7 @@ input[type="checkbox"] { display: inline; }
 
 /* Headings */
 h1 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Georgia, serif;font-size:2em;line-height:1.5em;text-align:left;font-weight:400;margin:0 0 1.25em; }
-h2 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.3em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;text-transform:uppercase;margin:2em 0 1em; }
+h2 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.3em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;text-transform:uppercase;margin:1em 0 1em; }
 h2 + h3 { margin-top:1.5em; }
 h3 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.1em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;margin-bottom:1.4em;margin-top:3em;text-transform:uppercase; }
 h4, h5, h6 { font-family:Verdana, "Bitstream Vera Sans", sans-serif;font-size:1em;text-align:left;font-weight:700;line-height:1.8em;margin:2em 0 0; }
@@ -105,7 +105,8 @@ p + h3, pre + h3 { margin-top:4em; }
 /* Site */
 body { margin-top: 0; padding: 50px 0 0 0; font-family: Verdana, "Bitstream Vera Sans", sans-serif; line-height: 1.8em; text-align: left; font-size: 11px; color: #4A4A4A; }
 .wrapper { width: 990px; margin: 0 auto; }
-.box { width: 720px; float: right; padding-bottom: 50px; }
+.box { width: 720px; float: right; }
+.box-main { padding-bottom: 50px; }
 header { width: 270px; float: left; position: fixed; letter-spacing: 2px; text-align: right; }
 footer { width: 270px; float: left; position: fixed; bottom: 20px; text-align: right; color: #AAA; } 
         
@@ -137,8 +138,14 @@ ul.custom > li:before { content: attr(data-content) '.'; padding-right: 7px; }
 .menu-root-radio ~ div { display:none; }
 .menu-root-radio:checked ~ div { display:block; }
 
-@media only screen and (min-width: 35em) {
-}
+@media only screen and (max-width: 990px) {
+    .wrapper { width:95%; margin: 0 auto; }
+    .box, header, footer { width: 100%; float: none; position: relative; }
+    .author { margin-bottom: 1em; }
+    .header-inner, .footer-inner { margin: 0px; }
+    .header-inner ul { text-align: center; }
+    .header-inner li { display: inline-block; margin:0 1em; }
+} 
 
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
 .ir br { display: none; }
