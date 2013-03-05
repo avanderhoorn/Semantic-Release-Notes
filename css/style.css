@@ -103,11 +103,11 @@ h1 + h2, h6 + h2 { margin-top:2em; }
 p + h3, pre + h3 { margin-top:4em; }
 
 /* Site */
-body { margin-top: 0; padding: 0; font-family: Verdana, "Bitstream Vera Sans", sans-serif; line-height: 1.8em; text-align: left; font-size: 11px; color: #4A4A4A; }
-.main { width: 1260px; height: auto; margin: 80px auto 0 auto; }
-.box { width: 720px; height: auto; margin: 0 auto 0 auto; }
-.menu { width: 270px; position: fixed; float: left; letter-spacing: 2px; text-align: right; }
-.menu-inner { margin-right: 40px; }
+body { margin-top: 0; padding: 50px 0 0 0; font-family: Verdana, "Bitstream Vera Sans", sans-serif; line-height: 1.8em; text-align: left; font-size: 11px; color: #4A4A4A; }
+.wrapper { width: 990px; margin: 0 auto; }
+.box { width: 720px; float: right; padding-bottom: 50px; }
+header { width: 270px; float: left; position: fixed; letter-spacing: 2px; text-align: right; }
+footer { width: 270px; float: left; position: fixed; bottom: 20px; text-align: right; color: #AAA; } 
         
 a, a:visited, a:link { color: #4A4A4A; }
 a:hover { color: black; text-decoration: none; background-color: #D1D1D1; }
@@ -115,8 +115,9 @@ a:hover { color: black; text-decoration: none; background-color: #D1D1D1; }
 .author { margin: 0 0 5em; }
 .author strong { font-size: 1em; font-weight: normal; text-transform: uppercase; }
 
-.menu li { list-style: none; text-transform: uppercase; margin: 0 0 1em 0; padding: 0; }
-.menu a, .menu a:visited, .menu a:link { color: black; text-decoration: none; }
+.header-inner, .footer-inner { margin-right: 40px; }
+.header-inner li { list-style: none; text-transform: uppercase; margin: 0 0 1em 0; padding: 0; }
+.header-inner a, .header-inner a:visited, .header-inner a:link { color: black; text-decoration: none; }
 
 .code, .result, .object { font-size: 11px; border: 1px dashed #777; padding: 1em; width: 100%; margin: 1em 0px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .code { background-color: #EEE; }
@@ -131,8 +132,6 @@ ul.custom > li:before { content: attr(data-content) '.'; padding-right: 7px; }
 .editor { width: 100%; height: 100px; }
 .execute { font-size: 1.5em; padding-left: 3em; padding-right: 3em; }
 .result-container { display: none; }
-
-footer { text-align: center; color: #AAA; margin:3em 0 2em; }
 
 .menu-root-radio { display:none; }
 .menu-root-radio ~ div { display:none; }

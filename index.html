@@ -14,11 +14,9 @@
 </head>
 <body>
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-    <header> 
-    </header>
-    <div class="main" role="main"> 
-        <div class="menu">
-            <div class="menu-inner">
+    <div class="wrapper"> 
+        <header>
+            <div class="header-inner">
                 <div class="author">
                     By <strong><a href="https://twitter.com/anthony_vdh">Anthony van der Hoorn</a></strong><br /> &amp; <strong><a href="https://twitter.com/nikmd23">Nik Molnar</a></strong> 
                 </div>
@@ -30,14 +28,15 @@
                     <li><a href="#MicroFormat">Micro Format</a></li>
                 </ul>
             </div>
-        </div>  
-        <div class="box">
+        </header>  
+        <section class="box">
             <h1>Semantic Release Notes</h1> 
             <div style="width:95%; margin: auto; background-color: lightyellow; border: 1px solid goldenrod; color: goldenrod; margin-top: -15px; padding: 10px 0; text-align: center;">
                 <strong>NOTE:</strong> SRN is currently a proposal and requires feedback.<br />To make it better please join in the conversation at our <a href="https://github.com/Glimpse/Semantic-Release-Notes/issues">GitHub repository</a>.
             </div>
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="Main" type="radio" checked="checked" />
+                <a id="Main"></a>
                 <div class="section-main">
                     <p>
                         Semantic Release Notes (SRN) is a text-to-object-to-html conversion tool for application authors. SRN 
@@ -138,6 +137,7 @@
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="Syntax" type="radio" />
                 <div class="section-basics">
+                    <a id="Syntax"></a>
                     <h2>Syntax</h2>
             
                     <h3>The axes of Semantic Release Notes </h3> 
@@ -376,6 +376,7 @@ This is the summary for Other Section for 2.0.
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="Examples" type="radio" />
                 <div class="section-syntax"> 
+                    <a id="Exmaples"></a>
                     <h2>Examples</h2>
                     <div class="section-editor">
                         <ul class="tabs">
@@ -465,6 +466,7 @@ This description is specific to plugin section.
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="Editor" type="radio" />
                 <div class="section-editor">
+                    <a id="Editor"></a>
                     <h2>Live Editor</h2> 
                     <div class="section-editor">
                         <p>Feel free to play around with some samples and see how things are put together.</p> 
@@ -489,15 +491,18 @@ This description is specific to plugin section.
             <div> 
                 <input name="menu-root-radio" class="menu-root-radio" id="MicroFormat" type="radio" />
                 <div class="section-micro-format">
+                    <a id="MicroFormat"></a>
                     <h2>Micro Format</h2>
 
                     Yet to come.
 
                 </div>
             </div> 
-        </div>  
+        </section>  
         <footer>
-            Copyright &copy; 2013 Anthony van der Hoorn &amp; Nik Molnar
+            <div class="footer-inner">
+                Copyright &copy; 2013<br /> Anthony van der Hoorn &amp; Nik Molnar
+            </div>
         </footer>
     </div>
 
