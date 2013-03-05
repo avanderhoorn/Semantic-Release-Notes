@@ -24,7 +24,7 @@
                     By <strong><a href="https://twitter.com/anthony_vdh">Anthony van der Hoorn</a></strong><br /> &amp; <strong><a href="https://twitter.com/nikmd23">Nik Molnar</a></strong> 
                 </div>
                 <ul>
-                    <li><a href="#Main">Main</a></li>
+                    <li><a href="#Main">Main</a></li> 
                     <li><a href="#Syntax">Syntax</a></li>
                     <li><a href="#Examples">Examples</a></li>
                     <li><a href="#Editor">Live Editor</a></li>
@@ -57,27 +57,6 @@
                         try it out, right now, using the <a href="#Editor">Live Editor</a> or by extending the provided <a href="#Examples"> 
                         Examples</a>.
                     </p>
-
-                    <h3>Why</h3>
-                    <p>
-                        With the way that we currently approach producing release notes, we lose any ability to "process" the data.
-                        If we change this and produce something that can be, a variety of different possibilities can be realized.
-                    </p>
-                    <p>
-                        Currently, most projects use either the following approaches:
-                        <ol>
-                            <li>a single document which lists every release, with the details of each release, or</li>
-                            <li>a document which only shows the details or the latest release, or</li>
-                            <li>a generated document which only shows the details of every release between what they had installed an how have.</li>
-                        </ol>
-                        These are mostly problematic as they aren't able to isolate which details the user should know about and in
-                        most cases, drowns the user in more information than they can/want to take in.
-                    </p>
-                    <p>
-                        What we should be aiming for, is to help the users find what is the most important information 
-                        they should know about. If we do this, users are more likely to find the information we as 
-                        developers want them to know about and be educated as to what items in the release they may care about
-                    </p>
             
                     <h3>Goals</h3> 
                     <p>
@@ -98,18 +77,57 @@
                         Once we have the type representations, we can then look at producing the following:
                         <ul>
                             <li>
-                                if a user updates through multiple versions of your product, be able to easily produce 
-                                a consolidated release note can be which highlights the most important changes,
+                                if a user <strong>updates through multiple versions</strong> of your product, be able to easily <strong>generate 
+                                a consolidated release note</strong> which highlights the most important changes,
                             </li>
                             <li>
-                                the above would also be true if the user wanted to view the changes that occurred 
-                                between take 2 different releases - in effect producing a "diff" at the release notes level
+                                the above would also be true if the <i>user</i> wanted to view the <strong>changes that occurred 
+                                between take 2 different releases</strong> - in effect producing a "diff" at the release notes level
                             </li>
                             <li>
-                                be able to change the rendered display of the release notes, without changing the format of the 
+                                be able to <strong>change the rendered display of the release notes</strong>, without changing the format of the 
                                 original source
                             </li>
                         </ul>
+                    </p>
+
+                    <h3>Sample</h3>
+                    <div class="container">
+                        <strong>Source:</strong>
+                        <pre class="code">Incremental release designed to provide a update to some of the core plugins.
+
+# System
+ - *Release Checker*: Now gives you a breakdown of exactly what you are missing. +New
+ - *Structured Layout*: An alternative layout engine that allows developers to control layout. +New
+ 
+# Plugin
+ - *Timeline*: Comes with an additional grid view to show the same data. +Changed
+ - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix</pre>
+                        <strong>Object:</strong>
+                        <pre class="object"></pre>
+                        <strong>Result:</strong>
+                        <div class="result"></div>
+                    </div> 
+
+                    <h3>Why</h3>
+                    <p>
+                        With the way that we currently approach producing release notes, we lose any ability to "process" the data.
+                        If we change this and produce something that can be, a variety of different possibilities can be realized.
+                    </p>
+                    <p>
+                        Currently, most projects use either the following approaches:
+                        <ol>
+                            <li>a single document which lists every release, with the details of each release, or</li>
+                            <li>a document which only shows the details or the latest release, or</li>
+                            <li>a generated document which only shows the details of every release between what they had installed an how have.</li>
+                        </ol>
+                        These are mostly problematic as they aren't able to isolate which details the user should know about and in
+                        most cases, drowns the user in more information than they can/want to take in.
+                    </p>
+                    <p>
+                        What we should be aiming for, is to help the users find what is the most important information 
+                        they should know about. If we do this, users are more likely to find the information we as 
+                        developers want them to know about and be educated as to what items in the release they may care about
                     </p>
 
                     <h3>Influences</h3> 
