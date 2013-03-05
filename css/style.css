@@ -95,7 +95,7 @@ input[type="checkbox"] { display: inline; }
 
 /* Headings */
 h1 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Georgia, serif;font-size:2em;line-height:1.5em;text-align:left;font-weight:400;margin:0 0 1.25em; }
-h2 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.3em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;text-transform:uppercase;margin:3em 0 1em; }
+h2 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.3em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;text-transform:uppercase;margin:2em 0 1em; }
 h2 + h3 { margin-top:1.5em; }
 h3 { font-family:"Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;font-size:1.1em;text-align:left;font-weight:400;line-height:1.8em;letter-spacing:.2em;margin-bottom:1.4em;margin-top:3em;text-transform:uppercase; }
 h4, h5, h6 { font-family:Verdana, "Bitstream Vera Sans", sans-serif;font-size:1em;text-align:left;font-weight:700;line-height:1.8em;margin:2em 0 0; }
