@@ -16,7 +16,7 @@
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
     <div class="wrapper"> 
         <section class="box box-top">
-            <h1>Semantic Release Notes <span class="light">v 0.2</span></h1> 
+            <h1>Semantic Release Notes <span class="light">v 0.3</span></h1> 
         </section>
         <header>
             <div class="header-inner">
@@ -189,8 +189,7 @@
                             <li>
                                 <strong>Category</strong>:
                                 Additionally the release note should be able to indicate what category an item is. For instance, 
-                                "+New", "+Change", "+Fix", +Developer". This is indicated via a single word at the end of the 
-                                list item that has a "+" prefix. 
+                                "+New", "+Change", "+Bug-Fix", +Developer". This is indicated via a single word, or - (dash) delimited phrase, that has a "+" prefix. 
                             </li>
                             <li>
                                 <strong>Release</strong>:
@@ -293,21 +292,21 @@ This is the summary for Other Section.
 
                     <h3>Category</h3>
                     <p>
-                        When creating creating items it's useful to be able to assign a Category to an item. These Categories are 
-                        fixed to the following types - New, Fix, Changed and Developer (where Developer describes a change that 
+                        When creating creating items it's useful to be able to assign a Category to an item. Conventional Categories may be established 
+                        are with special meaning. Examples may include: New, Fix, Changed and Developer (where Developer describes a change that 
                         developers would be interested over users).
                     </p>
                     <p>
-                        Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation at 
-                        the end of the item "+New".
+                        Markdown doesn't have an exact way of expressing this requirement, hence we use the following notation: "+New" or "+Bug-Fix".
                     </p>
                     <div class="container">
                         <strong>Examples:</strong>
-                        <pre class="code"> - This is a New list item. +New
- - This is a Fix list item. +Fix
- - This is a Change list item. +Change
- - This is a New list item. +New
- - This is a Developer list item. +Developer
+                        <pre class="code"> - This is a +New list item.
+ - This is a +Fix list item.
+ - This is a +Change list item.
+ - +New features are everyone's favorites.
+ - This is a list item for a +Developer.
+ - This is a +Super-Special custom list item.
                         </pre>
                         <div class="result"></div>
                         <pre class="object"></pre>
@@ -427,13 +426,13 @@ This is the summary for Other Section for 2.0.
 
 # System
 This description is specific to system section.
- - *Release Checker*: Now gives you a breakdown of exactly what you are missing. +New
- - *Structured Layout*: An alternative layout engine that allows developers to control layout. +New
+ - *Release Checker*: Now gives you a +new breakdown of exactly what you are missing.
+ - *Structured Layout*: A +new alternative layout engine that allows developers to control layout.
 
 # Plugin
 This description is specific to plugin section.
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
- - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
+ - *Ajax*: +Fix that crashed poll in Chrome and IE due to log/trace statement. [[i1234][http://getglimpse.com]]</pre>
                                 <strong>Result:</strong>
                                 <div class="result"></div>
                                 <strong>Object:</strong>
