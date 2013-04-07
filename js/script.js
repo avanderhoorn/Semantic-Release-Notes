@@ -21,7 +21,7 @@ var processSyntax = (function () {
         },
         lineProcessor = {
             options : [{ 
-                pattern : /^# (\w*)/i,
+                pattern : /^# ([\w\s*]*)/i,
                 test : function (input) {
                     return this.pattern.test(input);
                 },
