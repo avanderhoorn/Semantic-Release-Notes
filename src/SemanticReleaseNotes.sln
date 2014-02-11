@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D9C61DF4-BEB2-4305-87CA-73FF05D7B64F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticReleaseNotes.Tests", "SemanticReleaseNotes.Tests\SemanticReleaseNotes.Tests.csproj", "{E54CFD45-C5C8-456A-99AE-04E810410E23}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SemanticReleaseNotes", "SemanticReleaseNotes\SemanticReleaseNotes.fsproj", "{E8D4FB83-FB86-416B-B2D4-8ED4E5E360E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E54CFD45-C5C8-456A-99AE-04E810410E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E54CFD45-C5C8-456A-99AE-04E810410E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E54CFD45-C5C8-456A-99AE-04E810410E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E54CFD45-C5C8-456A-99AE-04E810410E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8D4FB83-FB86-416B-B2D4-8ED4E5E360E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D4FB83-FB86-416B-B2D4-8ED4E5E360E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D4FB83-FB86-416B-B2D4-8ED4E5E360E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D4FB83-FB86-416B-B2D4-8ED4E5E360E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

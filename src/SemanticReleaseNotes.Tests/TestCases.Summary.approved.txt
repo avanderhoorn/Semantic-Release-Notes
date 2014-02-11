@@ -1,0 +1,10 @@
+﻿ReleaseNotes
+  [Summary
+     (Text
+        "This is a _project_ summary with two paragraphs. 
+Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
+Aliquam hendreritmi posuere lectus.
+
+Vestibulum `enim wisi` viverra nec fringilla in laoreet
+vitae risus. Donec sit amet nisl. Aliquam [semper](?) ipsum
+sit amet velit.")]

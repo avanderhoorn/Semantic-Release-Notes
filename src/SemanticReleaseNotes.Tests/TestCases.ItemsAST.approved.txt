@@ -1,0 +1,5 @@
+﻿ReleaseNotes
+  [UnorderedItem (Text "This is the _first_ *list* item.");
+   UnorderedItem (Text "This is the **second** __list__ item.");
+   UnorderedItem (Text "This is the `third` list item.");
+   UnorderedItem (Text "This is the [forth](?) list item.")]
