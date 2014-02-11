@@ -49,6 +49,9 @@
       <Private>True</Private>
       <HintPath>..\packages\FSharp.Core.4.0.0\lib\FSharp.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -91,13 +94,19 @@
     <Content Include="Syntax.ItemsAST.approved.txt">
       <DependentUpon>Syntax.cs</DependentUpon>
     </Content>
+    <Content Include="Syntax.ItemsJSON.approved.txt">
+      <DependentUpon>Syntax.cs</DependentUpon>
+    </Content>
     <Content Include="Syntax.PriorityAST.approved.txt">
       <DependentUpon>Syntax.cs</DependentUpon>
     </Content>
     <Content Include="Syntax.SectionsAST.approved.txt">
       <DependentUpon>Syntax.cs</DependentUpon>
     </Content>
-    <Content Include="Syntax.Summary.approved.txt">
+    <Content Include="Syntax.SummaryAST.approved.txt">
+      <DependentUpon>Syntax.cs</DependentUpon>
+    </Content>
+    <Content Include="Syntax.SummaryJSON.approved.txt">
       <DependentUpon>Syntax.cs</DependentUpon>
     </Content>
   </ItemGroup>

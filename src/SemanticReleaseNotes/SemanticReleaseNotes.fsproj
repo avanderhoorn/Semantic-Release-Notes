@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ReleaseNotes.fs" />
     <Compile Include="AST.fs" />
+    <Compile Include="ASTToObjectModelVisitor.fs" />
     <Compile Include="Parser.fs" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -4,6 +4,7 @@ open System
 open FParsec
 
 open AST
+open SemanticReleaseNotes.Visitors
 
 // convenience type for locking down generic type inference issues
 // from: http://www.quanttec.com/fparsec/tutorial.html#fs-value-restriction
@@ -111,7 +112,7 @@ let ParseAST str =
     | Success(result, _, _)   -> result 
     | Failure(errorMsg, errorContext, _) -> raise (new ParseException(errorMsg, errorContext))
 
-let Parse str = ParseAST str //|> AST.ToObjectModel
+let Parse str = ParseAST str |> ASTToObjectModelVisitor.Visit
 
 let PrettyPrint a = sprintf "%A" a
 

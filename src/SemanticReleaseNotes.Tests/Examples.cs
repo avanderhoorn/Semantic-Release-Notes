@@ -18,7 +18,7 @@ Incremental release designed to provide an update to some of the core plugins.
  - Timeline: Comes with an additional grid view to show the same data. +Changed
  - Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix
 ";
-            var result = Parser.Parse(input);
+            var result = Parser.ParseAST(input);
             Approvals.Verify(Parser.PrettyPrint(result));
         }
 
@@ -36,7 +36,7 @@ Incremental release designed to provide an update to some of the core plugins.
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix
 ";
-            var result = Parser.Parse(input);
+            var result = Parser.ParseAST(input);
             Approvals.Verify(Parser.PrettyPrint(result));
         }
 
@@ -57,7 +57,7 @@ This description is specific to plugin section.
  - *Timeline*: Comes with an additional grid view to show the same data. +Changed
  - *Ajax*: +Fix that crashed poll in Chrome and IE due to log/trace statement. [[i1234][http://getglimpse.com]]
 ";
-            var result = Parser.Parse(input);
+            var result = Parser.ParseAST(input);
             Approvals.Verify(Parser.PrettyPrint(result));
         }
 
@@ -78,7 +78,7 @@ This description is specific to plugin section.
  1. *Timeline*: Comes with an additional grid view to show the same data. +Changed
  1. *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]
 ";
-            var result = Parser.Parse(input);
+            var result = Parser.ParseAST(input);
             Approvals.Verify(Parser.PrettyPrint(result));
         }
         

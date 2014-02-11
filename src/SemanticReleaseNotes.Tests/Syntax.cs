@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ApprovalTests;
 using NUnit.Framework;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using SemanticReleaseNotes.Tests.TestHelpers;
 
 namespace SemanticReleaseNotes.Tests
 {
@@ -11,13 +15,12 @@ namespace SemanticReleaseNotes.Tests
     [TestFixture]
     public class Syntax
     {
-        /// <summary>
-        /// A summary is one or more paragraphs of text.
-        /// </summary>
-        [Test]
-        public void Summary()
+        private static class SyntaxExamples
         {
-            var input = 
+            /// <summary>
+            /// A summary is one or more paragraphs of text.
+            /// </summary>
+            public static string Summary = 
 @"This is a _project_ summary with two paragraphs. 
 Lorem ipsum dolor sit amet consectetuer **adipiscing** elit. 
 Aliquam hendreritmi posuere lectus.
@@ -26,28 +29,73 @@ Vestibulum `enim wisi` viverra nec fringilla in laoreet
 vitae risus. Donec sit amet nisl. Aliquam [semper](?) ipsum
 sit amet velit.";
 
-            var result = Parser.Parse(input);
-
-            //Assert.AreEqual(input.NormalizeLineEndings(),result);
-            Approvals.Verify(Parser.PrettyPrint(result));
-        }
-
-        /// <summary>
-        /// Items are indicated via a standard Markdown 
-        /// <i>ordered</i> or <i>unordered</i> list.
-        /// </summary>
-        [Test]
-        public void ItemsAST()
-        {
-            var input = @"
+            /// <summary>
+            /// Items are indicated via a standard Markdown 
+            /// <i>ordered</i> or <i>unordered</i> list.
+            /// </summary>
+            public static string Items = @"
 - This is the _first_ *list* item.
 - This is the **second** __list__ item.
 - This is the `third` list item.
 - This is the [forth](?) list item.";
 
+        }
+
+        /// <summary>
+        /// The <see cref="JsonSerializerSettings"/> required to mimic 
+        /// the JSON output on http://semanticreleasenotes.org
+        /// </summary>
+        private static readonly JsonSerializerSettings semanticReleaseNotesJsonSerializerSettings =
+            new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore,
+            };
+
+        [Test]
+        public void SummaryAST()
+        {
+            var input = SyntaxExamples.Summary;
+
+            var result = Parser.ParseAST(input);
+
+            //Assert.AreEqual(input.NormalizeLineEndings(),result);
+            Approvals.Verify(Parser.PrettyPrint(result));
+        }
+
+        [Test]
+        public void SummaryJSON()
+        {
+            var input = SyntaxExamples.Summary;
+
+            var result = Parser.Parse(input);
+
+            var json = JsonConvert.SerializeObject(result, semanticReleaseNotesJsonSerializerSettings);
+
+            Approvals.Verify(json);
+        }
+
+        [Test]
+        public void ItemsAST()
+        {
+            var input = SyntaxExamples.Items;
+
             var result = Parser.ParseAST(input);
 
             Approvals.Verify(Parser.PrettyPrint(result));
+        }
+
+        [Test]
+        public void ItemsJSON()
+        {
+            var input = SyntaxExamples.Items;
+
+            var result = Parser.Parse(input);
+
+            var json = JsonConvert.SerializeObject(result, semanticReleaseNotesJsonSerializerSettings);
+
+            Approvals.Verify(json);
         }
 
         /// <summary>
