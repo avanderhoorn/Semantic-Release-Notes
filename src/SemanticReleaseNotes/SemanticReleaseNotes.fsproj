@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="ReleaseNotes.fs" />
     <Compile Include="AST.fs" />
-    <Compile Include="Visitors.fs" />
     <Compile Include="Parser.fs" />
     <None Include="packages.config" />
   </ItemGroup>

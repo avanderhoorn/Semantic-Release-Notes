@@ -1,9 +1,0 @@
-﻿ReleaseNotes
-  [Section (Heading (Priority 1,Text " Section"));
-   Summary (Text "This is the summary for Section.");
-   UnorderedItem (Text "This is a Section scoped first list item.");
-   UnorderedItem (Text "This is a Section scoped second list item.");
-   Section (Heading (Priority 1,Text " Other Section"));
-   Summary (Text "This is the summary for Other Section.");
-   UnorderedItem (Text "This is a Other Section scoped first list item.");
-   UnorderedItem (Text "This is a Other Section scoped second list item.")]

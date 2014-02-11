@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using ApprovalTests;
 
-namespace SemanticReleaseNotes.Tests
+namespace SemanticReleaseNotes.Tests.TestHelpers
 {
     public static class StringExtensions
     {

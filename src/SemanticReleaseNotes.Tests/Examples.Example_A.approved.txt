@@ -1,0 +1,29 @@
+﻿ReleaseNotes
+  [Section
+     (null,null,
+      Some
+        (Summary
+           "Incremental release designed to provide an update to some of the core plugins.
+"),
+      Some
+        (Items
+           [Item
+              (null,
+               Summary
+                 "Release Checker: Now gives you a breakdown of exactly what you are missing. +New",
+               null);
+            Item
+              (null,
+               Summary
+                 "Structured Layout: An alternative layout engine that allows developers to control layout. +New",
+               null);
+            Item
+              (null,
+               Summary
+                 "Timeline: Comes with an additional grid view to show the same data. +Changed",
+               null);
+            Item
+              (null,
+               Summary
+                 "Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix",
+               null)]))]

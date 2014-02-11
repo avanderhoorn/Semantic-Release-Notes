@@ -1,0 +1,20 @@
+﻿ReleaseNotes
+  [Section
+     (Some (Name " Section"),Some (Priority 1),
+      Some (Summary "This is the summary for Section."),
+      Some
+        (Items
+           [Item (null,Summary "This is a Section scoped first list item.",null);
+            Item
+              (null,Summary "This is a Section scoped second list item.",null)]));
+   Section
+     (Some (Name " Other Section"),Some (Priority 1),
+      Some (Summary "This is the summary for Other Section."),
+      Some
+        (Items
+           [Item
+              (null,Summary "This is a Other Section scoped first list item.",
+               null);
+            Item
+              (null,Summary "This is a Other Section scoped second list item.",
+               null)]))]

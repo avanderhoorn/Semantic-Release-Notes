@@ -1,8 +1,0 @@
-﻿ReleaseNotes
-  [OrderedItem (Priority 1,Text "This is a High priority list item.");
-   OrderedItem (Priority 1,Text "This is a High priority list item. ");
-   OrderedItem (Priority 2,Text "This is a Normal priority list item. ");
-   OrderedItem (Priority 1,Text "This is a High priority list item. ");
-   OrderedItem (Priority 2,Text "This is a Normal priority list item.");
-   OrderedItem (Priority 3,Text "This is a Minor priority list item.");
-   OrderedItem (Priority 3,Text "This is a Minor priority list item. ")]

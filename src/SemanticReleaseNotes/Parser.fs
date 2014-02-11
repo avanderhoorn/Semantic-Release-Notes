@@ -2,13 +2,14 @@
 
 open System
 open FParsec
+
 open AST
 
 // convenience type for locking down generic type inference issues
 // from: http://www.quanttec.com/fparsec/tutorial.html#fs-value-restriction
 type private State = unit
 
-let private ws = spaces //skipAnyOf " \t"
+let private ws = spaces 
 
 let private ch c = pchar c
 let private ch_ws c = ch c .>> ws
@@ -18,7 +19,8 @@ let private str s = pstring s
 let private str_ws s = str s .>> ws
 let private ws_str_ws s = ws >>. str s .>> ws
 
-#if DEBUG
+// make this compiler directive condition true to trace the parsers
+#if xDEBUG
 let (<!>) (p: Parser<_,_>) label : Parser<_,_> =
     fun stream ->
         printfn "%A: Entering %s" stream.Position label
@@ -30,6 +32,7 @@ let (<!>) (p: Parser<_,_>) label : Parser<_,_> =
     fun stream -> p stream
 #endif
 
+(*
 let private anyStringUntil_ch c = manySatisfy ((<>) c)
 let private between_ch cStart cEnd p = between (ch cStart) (ch cEnd) p
 let private string_between_ch cStart cEnd = between_ch cStart cEnd (anyStringUntil_ch cEnd) //<!> "stringSurroundedBy"
@@ -46,33 +49,54 @@ let private emptyIfNone items =
     match items with
     | Some x -> x
     | None -> []
+*)
 
+//let private restOfLineAsText skipNewline = restOfLine skipNewline |>> Text <!> "text"
+
+// -------
 let private newline_as_string = newline |>> fun x -> x.ToString()
 let private eof_as_string = eof >>. preturn ""
 let private eol = newline_as_string <|> eof_as_string
 
-let private restOfLineAsText skipNewline = restOfLine skipNewline |>> Text <!> "text"
+let private priority = ws >>. pint32 .>> skipString ". " |>> Priority <!> "item priority"
 
-let private empty_line = newline >>. preturn ""
+let private hn = many1Satisfy (fun c -> match c with '#' -> true | _ -> false) |>> (fun h -> h.Length) |>> Priority <!> "heading priority"
+let private name = restOfLine true <!> "name"
+let private heading = ws >>. hn .>>. name <!> "heading"
 
+let private empty_line = newline >>. preturn "" <!> "empty line"
 let private summaryLine = lookAhead (ws >>. noneOf "-+*#123456789") >>. many1CharsTill (noneOf "\r\n") eol <!> "summary line"
-
 let private join (s:string) (list:string list) = String.Join(s, list)
+let private summary = many1 (summaryLine <|> empty_line) |>> join "\n" |>> Summary <!> "summary"
 
-let private summary = many1 (empty_line <|> summaryLine) |>> join "\n" |>> Text |>> Summary <!> "summary"
+let private unorderedItem = tuple3 (preturn None) (ws >>. anyOf "-+*" >>. ws >>. restOfLine true |>> Summary) (preturn None) <!> "unordered item"
+let private orderedItem = tuple3 (priority |>> Some) (restOfLine true |>> Summary) (preturn None) <!> "ordered item" 
+let private item = (attempt orderedItem <|> unorderedItem) |>> Item
+let private items = many1 (attempt item) |>> Items <!> "items"
 
-let private unorderedItem = attempt (ws >>. skipString "- ") >>. restOfLineAsText true |>> UnorderedItem <!> "unordered item"
+let private resolveSectionTuple (optHeading:(Priority*string) option) (summary:Summary option) (items:Items option) =
+                let (optPriority,optName) = match optHeading with 
+                                           | Some(p,n) -> (Some(p),Some(Name n))
+                                           | None -> (None,None)
+                (optName, optPriority, summary, items)
 
-let private priority = ws >>. pint32 .>> skipString ". " |>> Priority <!> "priority"
-let private orderedItem = attempt priority .>>. restOfLineAsText true |>> OrderedItem <!> "ordered item" 
+// Ensure that a section has at least one of name, summary, or items
+let private ensureSectionResultIsValid (p: Parser<Name option*Priority option*Summary option*Items option,State>) =
+    fun stream ->
+        let reply = p stream
+        if reply.Status = ReplyStatus.Ok then
+            let (name,priority,summary,items) = reply.Result
+            if name.IsSome || summary.IsSome || items.IsSome then
+                Reply(reply.Result)
+            else
+                Reply(Error, expected "Either a heading, a summary paragraph, or a list of items.") 
+        else
+            Reply(reply.Status,reply.Error)
 
-let private hn = ws >>. many1Satisfy (fun c -> match c with '#' -> true | _ -> false) |>> (fun h -> h.Length) |>> Priority
-let private heading = attempt hn .>>. restOfLineAsText true |>> Heading <!> "heading"
-let private section = heading |>> Section <!> "section"
+let private sectionContent = pipe3 (opt heading) (opt summary) (opt items) resolveSectionTuple 
+let private section = ensureSectionResultIsValid sectionContent |>> Section <!> "section"
 
-let private note = orderedItem <|> unorderedItem <|> section <|> summary <!> "note"
-
-let private releaseNotes = ws >>. many note .>> ws .>> eof |>> ReleaseNotes <!> "releaseNotes"
+let private releaseNotes = ws >>. many1 section .>> ws .>> eof |>> ReleaseNotes <!> "release notes"
 
 let private parser = releaseNotes .>> eof 
 
