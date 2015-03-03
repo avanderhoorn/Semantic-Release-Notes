@@ -1,6 +1,13 @@
 /* Author:
 
 */
+
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+}
+
 var processSyntax = (function () {
     var linkProcessor = {
             pattern : /\[\[(\S+)\]\[(\S+)\]\]/i,
@@ -42,7 +49,7 @@ var processSyntax = (function () {
             },
             {
                 pattern : /^ [\-\+\*]|([123])\. /i, 
-                categoryPattern : /\+([^\s]+)/i,
+                categoryPattern : /\+([\w-]+)/i,
                 test : function (input) {
                     return this.pattern.test(input);
                 },
@@ -57,7 +64,11 @@ var processSyntax = (function () {
                     input = input.replace(this.pattern, '');
                     if (category) {
                         item.category = category[1];
-                        input = input.replace(this.categoryPattern, '');
+                        var replacement = category[1];
+                        if(input.endsWith(category[1])) {
+                            replacement = '';
+                        }
+                        input = input.replace(this.categoryPattern, replacement);
                     }
                     if (links.length > 0) {
                         item.taskId = links[0];
