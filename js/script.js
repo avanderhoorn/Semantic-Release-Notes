@@ -8,6 +8,17 @@ if (typeof String.prototype.endsWith !== 'function') {
     };
 }
 
+if (typeof String.prototype.titleize !== 'function') {
+    String.prototype.titleize = function() {
+      var words = this.split(' ')
+      var array = []
+      for (var i=0; i<words.length; ++i) {
+        array.push(words[i].charAt(0).toUpperCase() + words[i].toLowerCase().slice(1))
+      }
+      return array.join(' ')
+    };
+}
+
 var processSyntax = (function () {
     var linkProcessor = {
             pattern : /\[\[(\S+)\]\[(\S+)\]\]/i,
@@ -55,21 +66,29 @@ var processSyntax = (function () {
                 },
                 process : function (obj, input) {
                     var priority = this.pattern.exec(input),
-                        category = this.categoryPattern.exec(input),
                         links = linkProcessor.process(input, []),
                         item = {};
                             
                     if (priority && !isNaN(priority[1])) 
                         item.priority =  priority[1]; 
                     input = input.replace(this.pattern, '');
-                    if (category) {
-                        item.category = category[1];
+                    
+                    // handle categories
+                    
+                    if(!item.categories) {
+                        item.categories = [];
+                    }
+                    
+                    var category;
+                    while(category = this.categoryPattern.exec(input)) {
+                        item.categories.push(category[1].replace('-', ' ').titleize());
                         var replacement = category[1];
                         if(input.endsWith(category[1])) {
                             replacement = '';
                         }
                         input = input.replace(this.categoryPattern, replacement);
                     }
+                    
                     if (links.length > 0) {
                         item.taskId = links[0];
                         item.teskLink = links[1];
@@ -125,7 +144,7 @@ var processSyntax = (function () {
                 if (!matched)
                     lineProcessor.primary.process(result, rawLine, rawLines[+rawLineIndex + 1]);
             }
-                    
+            
             return result;
         };
              
@@ -184,9 +203,17 @@ var formatSyntax = (function () {
                     hasPriorities = true;
                 }
                 result += '<li' + attr + '>';
-                if (item.category)
-                    result += ' {' + item.category + '}';
-                    
+                if(item.categories) {
+                    result += '{';
+                    for(var categoryIndex in item.categories) {
+                        if(categoryIndex > 0) {
+                            result += ', ';
+                        }
+                        result += item.categories[categoryIndex];
+                    }
+                    result += '}';
+                }
+                
                 var summary = item.summary;
                 for (var fomatterIndex in formatHtmlParser) 
                     summary = formatHtmlParser[fomatterIndex].process(summary);
