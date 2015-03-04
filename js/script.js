@@ -169,7 +169,7 @@ var formatSyntax = (function () {
                     attr = '';
                     
                 if (item.priority) {
-                    attr = ' data-content="' + item.priority + '"';
+                    attr = ' srn-priority="' + item.priority + '"';
                     hasPriorities = true;
                 }
                 result += '<li' + attr + '>';
@@ -186,7 +186,7 @@ var formatSyntax = (function () {
                 result += '</li>';
             }
 
-            result =  '<ul' + (hasPriorities ? ' class="custom"' : '') + '>' + result + '</ul>';
+            result =  '<ul' + (hasPriorities ? ' class="srn-priorities"' : '') + '>' + result + '</ul>';
                     
             return result;
         },
