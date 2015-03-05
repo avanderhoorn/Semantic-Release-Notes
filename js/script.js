@@ -81,12 +81,11 @@ var processSyntax = (function () {
                     
                     // handle categories
                     
-                    if(!item.categories) {
-                        item.categories = [];
-                    }
-                    
                     var category;
                     while(category = this.categoryPattern.exec(input)) {
+                        if(!item.categories) {
+                            item.categories = [];
+                        }
                         item.categories.push(category[1].replace('-', ' ').titleize());
                         var replacement = category[1];
                         if(input.endsWith(category[1])) {
