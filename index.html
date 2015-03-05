@@ -193,6 +193,10 @@
                                 "+New", "+Change", "+Bug-Fix", +Developer". This is indicated via a single word, or - (dash) delimited phrase, that has a "+" prefix. 
                             </li>
                             <li>
+                                <strong>Metadata</strong>:
+                                A list of metadata can be added to a release note. Only some elements are possible, with their respective specific syntax.
+                            </li>
+                            <li>
                                 <strong>Release</strong>:
                                 As SRN allows for many releases to be defined within the one block of text, the system needs 
                                 to provide a means by which an individual release can be identified.
@@ -314,6 +318,25 @@ This is the summary for Other Section.
                         <pre class="object"></pre>
                     </div> 
             
+                    <h3>Metadata</h3>
+                    <p>
+                        It can be useful to add some metadata to a release note, for example the list of commits targeted by the release note.
+                    </p>
+                    <p>
+                        Each supported metadata have it's own syntax, here is the list:
+                        <ul>
+                            <li>Commits: the word "commits" (case insensitive) followed by a colon, then the first and last commits separated by three dots, included or not in a link
+                        </ul>
+                    </p>
+                    <div class="container">
+                        <strong>Examples:</strong>
+                        <pre class="code">commits:56af25a...d3fead4
+Commits: [56af25a...d3fead4](https://github.com/Glimpse/Semantic-Release-Notes/compare/56af25a...d3fead4)
+                        </pre>
+                        <div class="result"></div>
+                        <pre class="object"></pre>
+                    </div> 
+            
                     <h3>Release (Not Working)</h3>
                     <p>
                         In some cases we want to have the one document that describes many releases. In this case, the 
@@ -378,7 +401,7 @@ This is the summary for Other Section for 2.0.
             <div>
                 <input name="menu-root-radio" class="menu-root-radio" id="Examples" type="radio" />
                 <div class="section-syntax"> 
-                    <a id="Exmaples"></a>
+                    <a id="Examples"></a>
                     <h2>Examples</h2>
                     <div class="section-editor">
                         <ul class="tabs">
@@ -455,7 +478,9 @@ This description is specific to system section.
 # Plugin [[icon][http://getglimpse.com/release/icon/mvc.png]]
 This description is specific to plugin section.
  1. *Timeline*: Comes with an additional grid view to show the same data. +Changed
- 1. *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]</pre>
+ 1. *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. +Fix [[i1234][http://getglimpse.com]]
+
+Commits: [56af25a...d3fead4](https://github.com/Glimpse/Semantic-Release-Notes/compare/56af25a...d3fead4)</pre>
                                 <strong>Result:</strong>
                                 <div class="result"></div>
                                 <strong>Object:</strong>
@@ -518,7 +543,7 @@ This description is specific to plugin section.
         </section>  
         <footer>
             <div class="footer-inner">
-                Copyright &copy; 2013<br /> Anthony van der Hoorn &amp; Nik Molnar
+                Copyright &copy; 2015<br /> Anthony van der Hoorn &amp; Nik Molnar
             </div>
         </footer>
     </div>
