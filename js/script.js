@@ -75,6 +75,28 @@ var processSyntax = (function () {
                     else 
                         obj.sections[obj.sections.length - 1].items.push(item); 
                 }
+            },
+            {
+                metadataPatterns : [{ name : 'Commits', pattern : /^(?:commits:)?[ ]*(?:([0-9a-f]{5,40}\.{3}[0-9a-f]{5,40})|(\[[0-9a-f]{5,40}\.{3}[0-9a-f]{5,40}\]\(https?:\/\/\S+\)))$/i }],
+                test : function (input) {
+                    return this.metadataPatterns.some(function (element, index, array)
+                    {
+                        return element.pattern.test(input)
+                    });
+                },
+                process : function (obj, input) {
+                
+                    for(var metadataPatternIndex in this.metadataPatterns) {
+                        var metadataPattern = this.metadataPatterns[metadataPatternIndex];
+                        var metadata = metadataPattern.pattern.exec(input);
+                        if (metadata) {
+                            if (!obj.metadata) {
+                                obj.metadata = [];
+                            }
+                            obj.metadata.push({ name : metadataPattern.name, data : metadata[1] ? metadata[1] : metadata[2] });
+                        }
+                    }
+                }
             }],
             primary : {
                 pattern : /^[a-zA-Z0-9]/i,
@@ -114,7 +136,7 @@ var processSyntax = (function () {
                 if (!matched)
                     lineProcessor.primary.process(result, rawLine, rawLines[+rawLineIndex + 1]);
             }
-                    
+            
             return result;
         };
              
@@ -199,7 +221,13 @@ var formatSyntax = (function () {
                 
                 result += '<div><h1>' + feature.name + '</h1>' + processString(feature.summary) + processList(feature.items) + '</div>';
             }
-
+			
+			for (var metadataIndex in val.metadata) {
+				var metadata = val.metadata[metadataIndex];
+				
+				result += '<div>' + metadata.name + ': ' + processString(metadata.data) + '</div>';
+			}
+			
             return result; 
         };
             
