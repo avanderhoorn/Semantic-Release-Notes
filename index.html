@@ -323,14 +323,14 @@ This is the summary for Other Section.
                         It can be useful to add some metadata to a release note, for example the list of commits targeted by the release note.
                     </p>
                     <p>
-                        Each supported metadata have it's own syntax, here is the list:
+                        All metadata can be preceded by its name (case insensitive) followed by a colon, but each supported metadata have it's own syntax:
                         <ul>
-                            <li>Commits: the word "commits" (case insensitive) followed by a colon, then the first and last commits separated by three dots, included or not in a link
+                            <li>Commits: the first and last commits separated by three dots, included or not in a link
                         </ul>
                     </p>
                     <div class="container">
                         <strong>Examples:</strong>
-                        <pre class="code">commits:56af25a...d3fead4
+                        <pre class="code">56af25a...d3fead4
 Commits: [56af25a...d3fead4](https://github.com/Glimpse/Semantic-Release-Notes/compare/56af25a...d3fead4)
                         </pre>
                         <div class="result"></div>
