@@ -77,23 +77,27 @@ var processSyntax = (function () {
                 }
             },
             {
-                metadataPatterns : [{ name : 'Commits', pattern : /^(?:commits:)?[ ]*(?:([0-9a-f]{5,40}\.{3}[0-9a-f]{5,40})|(\[[0-9a-f]{5,40}\.{3}[0-9a-f]{5,40}\]\(https?:\/\/\S+\)))$/i }],
+                metadataCollection : [{ 
+                        name : 'Commits', 
+                        pattern : /^(?:commits:)?[ ]*(?:([0-9a-f]{5,40}\.{3}[0-9a-f]{5,40})|(\[[0-9a-f]{5,40}\.{3}[0-9a-f]{5,40}\]\(https?:\/\/\S+\)))$/i,
+                        getValue : function(metadataMatch) { return metadataMatch[1] ? metadataMatch[1] : metadataMatch[2] }
+                    }],
                 test : function (input) {
-                    return this.metadataPatterns.some(function (element, index, array)
+                    return this.metadataCollection.some(function (element, index, array)
                     {
                         return element.pattern.test(input)
                     });
                 },
                 process : function (obj, input) {
                 
-                    for(var metadataPatternIndex in this.metadataPatterns) {
-                        var metadataPattern = this.metadataPatterns[metadataPatternIndex];
-                        var metadata = metadataPattern.pattern.exec(input);
-                        if (metadata) {
+                    for(var metadataIndex in this.metadataCollection) {
+                        var metadata = this.metadataCollection[metadataIndex];
+                        var metadataMatch = metadata.pattern.exec(input);
+                        if (metadataMatch) {
                             if (!obj.metadata) {
                                 obj.metadata = [];
                             }
-                            obj.metadata.push({ name : metadataPattern.name, data : metadata[1] ? metadata[1] : metadata[2] });
+                            obj.metadata.push({ name : metadata.name, data : metadata.getValue(metadataMatch) });
                         }
                     }
                 }
