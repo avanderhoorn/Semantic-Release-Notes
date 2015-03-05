@@ -73,6 +73,12 @@ var processSyntax = (function () {
                         item.priority =  priority[1]; 
                     input = input.replace(this.pattern, '');
                     
+                    if (links.length > 0) {
+                        item.taskId = links[0];
+                        item.teskLink = links[1];
+                        input = input.replace(linkProcessor.pattern, '').trim();
+                    }
+                    
                     // handle categories
                     
                     if(!item.categories) {
@@ -89,11 +95,6 @@ var processSyntax = (function () {
                         input = input.replace(this.categoryPattern, replacement);
                     }
                     
-                    if (links.length > 0) {
-                        item.taskId = links[0];
-                        item.teskLink = links[1];
-                        input = input.replace(linkProcessor.pattern, '');
-                    }
                     item.summary = input.trim();
 
                     // Store results 
