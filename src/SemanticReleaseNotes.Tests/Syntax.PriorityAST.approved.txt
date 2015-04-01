@@ -1,0 +1,26 @@
+﻿ReleaseNotes
+  [Section
+     (null,null,null,
+      Some
+        (Items
+           [Item
+              (Some (Priority 1),Summary "This is a High priority list item.",
+               null);
+            Item
+              (Some (Priority 1),Summary "This is a High priority list item. ",
+               null);
+            Item
+              (Some (Priority 2),Summary "This is a Normal priority list item. ",
+               null);
+            Item
+              (Some (Priority 1),Summary "This is a High priority list item. ",
+               null);
+            Item
+              (Some (Priority 2),Summary "This is a Normal priority list item.",
+               null);
+            Item
+              (Some (Priority 3),Summary "This is a Minor priority list item.",
+               null);
+            Item
+              (Some (Priority 3),Summary "This is a Minor priority list item. ",
+               null)]))]

@@ -1,0 +1,43 @@
+﻿ReleaseNotes
+  [Section
+     (null,null,
+      Some
+        (Summary
+           "Incremental release designed to provide an update to some of the core plugins."),
+      Some
+        (Items
+           [Item
+              (null,
+               Summary
+                 "*Example*: You can have global issues that aren't grouped to a section",
+               null)]));
+   Section
+     (Some (Name " System"),Some (Priority 1),
+      Some (Summary "This description is specific to system section."),
+      Some
+        (Items
+           [Item
+              (null,
+               Summary
+                 "*Release Checker*: Now gives you a +new breakdown of exactly what you are missing.",
+               null);
+            Item
+              (null,
+               Summary
+                 "*Structured Layout*: A +new alternative layout engine that allows developers to control layout.",
+               null)]));
+   Section
+     (Some (Name " Plugin"),Some (Priority 1),
+      Some (Summary "This description is specific to plugin section."),
+      Some
+        (Items
+           [Item
+              (null,
+               Summary
+                 "*Timeline*: Comes with an additional grid view to show the same data. +Changed",
+               null);
+            Item
+              (null,
+               Summary
+                 "*Ajax*: +Fix that crashed poll in Chrome and IE due to log/trace statement. [[i1234][http://getglimpse.com]]",
+               null)]))]

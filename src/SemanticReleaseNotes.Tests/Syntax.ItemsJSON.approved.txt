@@ -1,0 +1,16 @@
+﻿{
+  "items": [
+    {
+      "summary": "This is the _first_ *list* item."
+    },
+    {
+      "summary": "This is the **second** __list__ item."
+    },
+    {
+      "summary": "This is the `third` list item."
+    },
+    {
+      "summary": "This is the [forth](?) list item."
+    }
+  ]
+}

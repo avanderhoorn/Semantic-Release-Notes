@@ -1,0 +1,9 @@
+﻿ReleaseNotes
+  [Section
+     (null,null,null,
+      Some
+        (Items
+           [Item (null,Summary "This is the _first_ *list* item.",null);
+            Item (null,Summary "This is the **second** __list__ item.",null);
+            Item (null,Summary "This is the `third` list item.",null);
+            Item (null,Summary "This is the [forth](?) list item.",null)]))]
