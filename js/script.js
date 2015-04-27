@@ -1,6 +1,24 @@
 /* Author:
 
 */
+
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+}
+
+if (typeof String.prototype.titleize !== 'function') {
+    String.prototype.titleize = function() {
+      var words = this.split(' ')
+      var array = []
+      for (var i=0; i<words.length; ++i) {
+        array.push(words[i].charAt(0).toUpperCase() + words[i].toLowerCase().slice(1))
+      }
+      return array.join(' ')
+    };
+}
+
 var processSyntax = (function () {
     var linkProcessor = {
             pattern : /\[\[(\S+)\]\[(\S+)\]\]/i,
@@ -42,28 +60,40 @@ var processSyntax = (function () {
             },
             {
                 pattern : /^ [\-\+\*]|([123])\. /i, 
-                categoryPattern : /\+([^\s]+)/i,
+                categoryPattern : /\+([\w-]+)/i,
                 test : function (input) {
                     return this.pattern.test(input);
                 },
                 process : function (obj, input) {
                     var priority = this.pattern.exec(input),
-                        category = this.categoryPattern.exec(input),
                         links = linkProcessor.process(input, []),
                         item = {};
                             
                     if (priority && !isNaN(priority[1])) 
                         item.priority =  priority[1]; 
                     input = input.replace(this.pattern, '');
-                    if (category) {
-                        item.category = category[1];
-                        input = input.replace(this.categoryPattern, '');
-                    }
+                    
                     if (links.length > 0) {
                         item.taskId = links[0];
                         item.teskLink = links[1];
-                        input = input.replace(linkProcessor.pattern, '');
+                        input = input.replace(linkProcessor.pattern, '').trim();
                     }
+                    
+                    // handle categories
+                    
+                    var category;
+                    while(category = this.categoryPattern.exec(input)) {
+                        if(!item.categories) {
+                            item.categories = [];
+                        }
+                        item.categories.push(category[1].replace('-', ' ').titleize());
+                        var replacement = category[1];
+                        if(input.endsWith(category[1])) {
+                            replacement = '';
+                        }
+                        input = input.replace(this.categoryPattern, replacement);
+                    }
+                    
                     item.summary = input.trim();
 
                     // Store results 
@@ -199,9 +229,17 @@ var formatSyntax = (function () {
                     hasPriorities = true;
                 }
                 result += '<li' + attr + '>';
-                if (item.category)
-                    result += ' {' + item.category + '}';
-                    
+                if(item.categories) {
+                    result += '{';
+                    for(var categoryIndex in item.categories) {
+                        if(categoryIndex > 0) {
+                            result += ', ';
+                        }
+                        result += item.categories[categoryIndex];
+                    }
+                    result += '}';
+                }
+                
                 var summary = item.summary;
                 for (var fomatterIndex in formatHtmlParser) 
                     summary = formatHtmlParser[fomatterIndex].process(summary);
