@@ -317,7 +317,7 @@ This is the summary for Other Section.
                         <div class="result"></div>
                         <pre class="object"></pre>
                     </div> 
-            
+
                     <h3>Metadata</h3>
                     <p>
                         It can be useful to add some metadata to a release note, for example the list of commits targeted by the release note.
@@ -325,18 +325,27 @@ This is the summary for Other Section.
                     <p>
                         All metadata can be preceded by its name (case insensitive) followed by a colon, but each supported metadata have it's own syntax:
                         <ul>
-                            <li>Commits: the first and last commits separated by three dots, included or not in a link
+                            <li>Commits: the first and last commits separated by three dots, included or not in a link. Name optional.</li>
+                            <li>Contributors: list of all contributors for the release. Name mandatory.</li>
+                            <li>Source: link to the sources. Name mandatory.</li>
+                            <li>Binaries: link to the binaries. Name mandatory.</li>
+                            <li>Generated at: generation time of the release notes with the following format: yyyy-mm-ddTHH:mm:ssZ (ISO 8601). Name optional.</li>
                         </ul>
                     </p>
                     <div class="container">
                         <strong>Examples:</strong>
                         <pre class="code">56af25a...d3fead4
 Commits: [56af25a...d3fead4](https://github.com/Glimpse/Semantic-Release-Notes/compare/56af25a...d3fead4)
+Contributors: Jérémie Bertrand, Jake Ginnivan, [Anthony van der Hoorn](https://github.com/avanderhoorn)
+source: [MyPackage.zip](https://github.com/laedit/MyPackage/archive/v0.1.0.zip)
+binaries: [MyPackage.exe](https://github.com/laedit/MyPackage/releases/download/v0.1.0/MyPackage.exe)
+Generated at: 2015-05-04T08:45:36Z
+2015-05-04T08:45:36Z
                         </pre>
                         <div class="result"></div>
                         <pre class="object"></pre>
-                    </div> 
-            
+                    </div>
+
                     <h3>Release (Not Working)</h3>
                     <p>
                         In some cases we want to have the one document that describes many releases. In this case, the 
@@ -550,7 +559,7 @@ Commits: [56af25a...d3fead4](https://github.com/Glimpse/Semantic-Release-Notes/c
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script> 
+    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>');</script> 
     <script src="js/script.js"></script> 
 <script type="text/javascript">
   var _gaq = _gaq || [];

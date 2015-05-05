@@ -24,7 +24,7 @@ var processSyntax = (function () {
             pattern : /\[\[(\S+)\]\[(\S+)\]\]/i,
             process : function (input, obj) {
                 var match =  this.pattern.exec(input);
-                        
+
                 if (match) {
                     if ($.isArray(obj)) {
                         obj.push(match[1]);
@@ -33,12 +33,12 @@ var processSyntax = (function () {
                     else
                         obj[match[1]] = match[2];
                 }
-                        
+
                 return obj;
             }
         },
         lineProcessor = {
-            options : [{ 
+            options : [{
                 pattern : /^# ([\w\s*]*)/i,
                 test : function (input) {
                     return this.pattern.test(input);
@@ -47,19 +47,19 @@ var processSyntax = (function () {
                     var title = this.pattern.exec(input),
                         links = linkProcessor.process(input, {}),
                         feature = { items : [] };
-                            
+
                     feature.name = title[1];
                     if (links.icon)
                         feature.icon = links.icon;
-                            
-                    // Store results 
+
+                    // Store results
                     if (!obj.sections)
-                        obj.sections = []; 
+                        obj.sections = [];
                     obj.sections.push(feature);
                 }
             },
             {
-                pattern : /^ [\-\+\*]|([123])\. /i, 
+                pattern : /^ [\-\+\*]|([123])\. /i,
                 categoryPattern : /\+([\w-]+)/i,
                 test : function (input) {
                     return this.pattern.test(input);
@@ -68,19 +68,19 @@ var processSyntax = (function () {
                     var priority = this.pattern.exec(input),
                         links = linkProcessor.process(input, []),
                         item = {};
-                            
-                    if (priority && !isNaN(priority[1])) 
-                        item.priority =  priority[1]; 
+
+                    if (priority && !isNaN(priority[1]))
+                        item.priority =  priority[1];
                     input = input.replace(this.pattern, '');
-                    
+
                     if (links.length > 0) {
                         item.taskId = links[0];
                         item.teskLink = links[1];
                         input = input.replace(linkProcessor.pattern, '').trim();
                     }
-                    
+
                     // handle categories
-                    
+
                     var category;
                     while(category = this.categoryPattern.exec(input)) {
                         if(!item.categories) {
@@ -93,25 +93,45 @@ var processSyntax = (function () {
                         }
                         input = input.replace(this.categoryPattern, replacement);
                     }
-                    
+
                     item.summary = input.trim();
 
-                    // Store results 
+                    // Store results
                     if (!obj.sections) {
                         if (!obj.items)
                             obj.items = [];
                         obj.items.push(item);
                     }
-                    else 
-                        obj.sections[obj.sections.length - 1].items.push(item); 
+                    else
+                        obj.sections[obj.sections.length - 1].items.push(item);
                 }
             },
             {
-                metadataCollection : [{ 
-                        name : 'Commits', 
+                metadataCollection : [{
+                        name : 'Commits',
                         pattern : /^(?:commits:)?[ ]*(?:([0-9a-f]{5,40}\.{3}[0-9a-f]{5,40})|(\[[0-9a-f]{5,40}\.{3}[0-9a-f]{5,40}\]\(https?:\/\/\S+\)))$/i,
                         getValue : function(metadataMatch) { return metadataMatch[1] ? metadataMatch[1] : metadataMatch[2] }
-                    }],
+                        },
+                        {
+                            name : 'Contributors',
+                            pattern : /^(?:contributor)[s]?:[ ]*(.*)$/i,
+                            getValue : function(metadataMatch) { return metadataMatch[1]}
+                        },
+                        {
+                            name : 'Source',
+                            pattern : /^(?:source:)[ ]*(.*)$/i,
+                            getValue : function(metadataMatch) { return metadataMatch[1]}
+                        },
+                        {
+                            name : 'Binaries',
+                            pattern : /^(?:binaries:)[ ]*(.*)$/i,
+                            getValue : function(metadataMatch) { return metadataMatch[1]}
+                        },
+                        {
+                            name : 'Generated at',
+                            pattern : /^(?:generated at:)?[ ]*(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\dZ)$/i,
+                            getValue : function(metadataMatch) { return metadataMatch[1]}
+                        }],
                 test : function (input) {
                     return this.metadataCollection.some(function (element, index, array)
                     {
@@ -119,7 +139,7 @@ var processSyntax = (function () {
                     });
                 },
                 process : function (obj, input) {
-                
+
                     for(var metadataIndex in this.metadataCollection) {
                         var metadata = this.metadataCollection[metadataIndex];
                         var metadataMatch = metadata.pattern.exec(input);
@@ -134,19 +154,19 @@ var processSyntax = (function () {
             }],
             primary : {
                 pattern : /^[a-zA-Z0-9]/i,
-                process : function (obj, input, nextInput) { 
+                process : function (obj, input, nextInput) {
                     var item = obj;
-                    if (obj.sections) 
+                    if (obj.sections)
                         item = obj.sections[obj.sections.length - 1];
 
                     if (!item.summary)
-                        item.summary = ''; 
+                        item.summary = '';
 
                     input = input.trim();
                     if (input === '' && nextInput && this.pattern.test(nextInput))
-                        input = '\n\n'; 
-                            
-                    item.summary += input; 
+                        input = '\n\n';
+
+                    item.summary += input;
                 }
             }
         },
@@ -161,7 +181,7 @@ var processSyntax = (function () {
                 // Process the line
                 for (var optionIndex in lineProcessor.options) {
                     var option = lineProcessor.options[optionIndex];
-                            
+
                     if (option.test(rawLine)) {
                         option.process(result, rawLine);
                         matched = true;
@@ -170,15 +190,15 @@ var processSyntax = (function () {
                 if (!matched)
                     lineProcessor.primary.process(result, rawLine, rawLines[+rawLineIndex + 1]);
             }
-            
+
             return result;
         };
-             
+
     return {
-        process : process  
+        process : process
     };
 })();
-      
+
 var formatSyntax = (function () {
     var formatHtmlParser = [
             {
@@ -208,7 +228,7 @@ var formatSyntax = (function () {
         ],
         processString = function (val) {
             if (val) {
-                for (var fomatterIndex in formatHtmlParser) 
+                for (var fomatterIndex in formatHtmlParser)
                     val = formatHtmlParser[fomatterIndex].process(val);
                 val = val.replace(/\n/g, '<br />');
             }
@@ -216,14 +236,14 @@ var formatSyntax = (function () {
                 val = '';
             return val;
         },
-        processList = function (items) { 
+        processList = function (items) {
             var result = '',
                 hasPriorities = false;
 
             for (var itemIndex in items) {
                 var item = items[itemIndex],
                     attr = '';
-                    
+
                 if (item.priority) {
                     attr = ' srn-priority="' + item.priority + '"';
                     hasPriorities = true;
@@ -239,45 +259,45 @@ var formatSyntax = (function () {
                     }
                     result += '}';
                 }
-                
+
                 var summary = item.summary;
-                for (var fomatterIndex in formatHtmlParser) 
+                for (var fomatterIndex in formatHtmlParser)
                     summary = formatHtmlParser[fomatterIndex].process(summary);
                 result += summary;
-                    
+
                 if (item.taskId)
                     result += ' <a href="' + item.teskLink + '">' + item.taskId + '</a>';
                 result += '</li>';
             }
 
             result =  '<ul' + (hasPriorities ? ' class="srn-priorities"' : '') + '>' + result + '</ul>';
-                    
+
             return result;
         },
         process = function (val) {
             var result = '';
-              
+
             result += '<div>' + processString(val.summary) + processList(val.items) + '</div>';
             for (var featureIndex in val.sections) {
                 var feature = val.sections[featureIndex];
-                
+
                 result += '<div><h1>' + feature.name + '</h1>' + processString(feature.summary) + processList(feature.items) + '</div>';
             }
-			
+
 			for (var metadataIndex in val.metadata) {
 				var metadata = val.metadata[metadataIndex];
-				
+
 				result += '<div>' + metadata.name + ': ' + processString(metadata.data) + '</div>';
 			}
-			
-            return result; 
+
+            return result;
         };
-            
+
     return {
         process : process
     };
 })();
-      
+
 var formatJson = (function () {
     var process = function(val) {
         var result = '',
@@ -287,47 +307,47 @@ var formatJson = (function () {
             char = '',
             indentStr = '    ',
             newLine = '\r\n';
-        
+
         for (var i = 0; i < strLen; i++) {
             char = val[i];
-            
+
             if (char == '{' || char == '[') {
                 stack.push(stackTop = {
                     isArray: char == '[',
                     isOutterArray: char == '[' && val[i + 1] == '[',
                     indent: stackTop.indent + (!stackTop.isOutterArray ? indentStr : '')
-                }); 
+                });
             }
-            
+
             if (char == '}' || (char == ']' && stackTop.isOutterArray))
                 result += newLine + (stack.length > 1 ? stack[stack.length - 2].indent : '');
-             
+
             result += ((char == ']' && !stackTop.isOutterArray) || char == ':' ? ' ' : '') + char + (char == '[' || char == ':' || (char == ',' && stackTop.isArray) ? ' ' : '');
-             
+
             if ((char == ',' && (!stackTop.isArray || stackTop.isOutterArray)) || char == '{' || (char == '[' && stackTop.isOutterArray))
                 result += newLine + stackTop.indent;
-            
+
             if (char == '}' || char == ']') {
                 stack.pop();
                 stackTop = stack[stack.length - 1];
-            } 
+            }
         }
 
         return result;
     };
-            
+
     return {
         process : process
     };
 })();
-  
-var process = function(scope, text) { 
+
+var process = function(scope, text) {
     var data = processSyntax.process(text),
         stringData = formatJson.process(JSON.stringify(data)),
         stringHtml = formatSyntax.process(data);
 
     scope.find('.result').html(stringHtml);
-    scope.find('.object').html(stringData); 
+    scope.find('.object').html(stringData);
 };
 
 var navigate = function (evt) {
@@ -357,7 +377,7 @@ $(function() {
         ulNext.find('.active').removeClass('active');
 
         ul.find('a[data-tab="' + index + '"]').addClass('active');
-        ulNext.find('li[data-tab="' + index + '"]').addClass('active'); 
+        ulNext.find('li[data-tab="' + index + '"]').addClass('active');
     });
 
     var execute = function() {
@@ -371,5 +391,3 @@ $(function() {
     });
     execute();
 });
-
-
